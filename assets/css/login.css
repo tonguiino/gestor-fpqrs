@@ -2,12 +2,13 @@
   overflow: hidden;
   margin: 0;
 }
+
 .sidebar-login {
   padding: 2.5rem;
   background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
-      flex:0 0 31.5%;
+  flex: 0 0 31.5%;
 }
 
 .sidebar-login-header {
@@ -25,9 +26,11 @@
   font-size: 1.25rem;
   padding-left: 0.6rem;
 }
+
 .sidebar-middle-info {
   flex: 1;
 }
+
 .login-sidebar-title {
   color: var(--secondary-color);
   font-weight: bold;

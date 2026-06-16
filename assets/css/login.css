@@ -1,0 +1,49 @@
+.sidebar-login {
+  padding: 2.5rem;
+  background-color: var(--primary-color);
+}
+
+.sidebar-login-header {
+  margin-bottom: 4rem;
+}
+.sidebar-brand {
+  color: var(--secondary-color);
+  letter-spacing: -.025em;
+  font-size: 1.25rem;
+  padding-left: .6rem;
+}
+
+.login-sidebar-title {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.sidebar-text-header {
+  color: #ffffffb3;
+  line-height: 1.625;
+  font-size: 1 rem;
+}
+
+.sidebar-login-list {
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar-icon-list {
+  background-color: var(--hover-color);
+  border-radius: 30%;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+}
+
+.sidebar-subtitle {
+  font-size: 0.73rem;
+  color: #ffffff8c;
+}
+
+.sidebar-footer {
+  color: #ffffff4d;
+}

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+  --primary-color: #1e3a5f;
+  --secondary-color: #ffffff;
+  --hover-color: #405777;
+  --border-color: #e5e7eb;
+  --background-color: #f4f6f9;
+
+  --text-primary: #1e3a5f;
+  --text-secondary: #bcc4cf;
+  --text-light: #78899f;
+
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #2563eb;
+
+  --font-family: "Plus Jakarta Sans", sans-serif;
+  --font-size-base: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+ul {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
+
+.badge-abierto {
+  background-color: #dbeafe;
+  color: var(--color-info);
+}
+
+.badge-en-proceso {
+  background-color: #fef3c7;
+  color: var(--color-warning);
+}
+
+.badge-cerrado {
+  background-color: #dcfce7;
+  color: var(--color-success);
+}
+
+.badge-anulado {
+  background-color: #f3f4f6;
+  color: var(--text-secondary);
+}
+
+/* Semáforo SLA */
+.sla-vencido {
+  color: var(--color-danger);
+}
+
+.sla-proximo {
+  color: var(--color-warning);
+}
+
+.sla-ok {
+  color: var(--color-success);
+}

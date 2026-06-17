@@ -7,6 +7,7 @@
   --border-color: #e5e7eb;
   --background-color: #f4f6f9;
   --mute-color: #e8eef5;
+  --background-danger: #fef2f2;
 
   --text-primary: #0f1c2e;
   --text-secondary: #bcc4cf;
@@ -15,7 +16,7 @@
 
   --color-success: #16a34a;
   --color-warning: #d97706;
-  --color-danger: #dc2626;
+    : #b91c1c;
   --color-info: #2563eb;
 
   --font-family: "Plus Jakarta Sans", sans-serif;

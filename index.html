@@ -14,7 +14,7 @@
 <body>
 
     <div class="login row min-vh-100">
-        <section class="sidebar-login col-md-4 ">
+        <section class="sidebar-login ">
 
             <div class="sidebar-login-header">
                 <img class="sidebar-logo" src="../assets/img/logo.webp" alt="GestorFPQRS">
@@ -81,34 +81,45 @@
                 </ul>
             </div>
             <div class="sidebar-footer">
-
                 <p class="sidebar-footer-copytext">© 2026 CoopFinanzas. Todos los derechos reservados.</p>
                 <p class="sidebar-footer-brand">Sistema de Gestión FPQRS v2.4.1 — Normativa SFC Colombia</p>
             </div>
         </section>
-        <main class="col-md-8 login-form-container">
-            <div class="login-form-wrapper">
-                <h2 class="login-title">Iniciar sesión</h2>
-                <p>Ingrese sus credenciales para acceder al sistema</p>
+        <main class="login-form-container  px-4">
 
-                <form id="formLogin" novalidate>
+            <div class="login-right-content">
+                <div class="login-header-brand">
+                    <img class="login-logo" src="../assets/img/logo.webp" alt="GestorFPQRS">
+                    <span class="login-brand">GestorFPQRS</span>
+                </div>
+
+                <h2 class="login-title mb-1">Iniciar sesión</h2>
+                <p class="text-muted  mb-4">Ingrese sus credenciales para acceder al sistema</p>
+                <div id="loginAlert" class="alert d-flex align-items-center gap-2 mb-3" role="alert"
+                    style="display:none !important;">
+                    <i data-lucide="circle" width="16" height="16"></i>
+                    <span id="loginAlertMsg"></span>
+                </div>
+                <form id="formLogin" class="mb-4" novalidate>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Correo electrónico</label>
+                        <label for="email" class="form-label ">Correo electrónico</label>
                         <input type="email" id="email" class="form-control" placeholder="usuario@coopfinanzas.com.co">
+                        <div class="invalid-feedback" id="emailError">
+                            El correo electrónico es obligatorio
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
+                        <label for="password" class="form-label ">Contraseña</label>
                         <div class="position-relative">
                             <input type="password" id="password" class="form-control pe-5" placeholder="••••••••••">
-                            <div class="invalid-feedback">
-                                El correo electrónico es obligatorio
+                            <div class="invalid-feedback" id="passwordError">
+                                La contraseña es obligatoria
                             </div>
                             <button type="button" id="togglePassword"
-                                class="position-absolute top-50 end-0 translate-middle border border-0 bg-white">
+                                class="position-absolute top-50 end-0 translate-middle-y me-2 border-0 bg-transparent text-secondary">
                                 <i data-lucide="eye" id="eyeOpen" width="20" height="20"></i>
-                                <i data-lucide="eye-off" id="eyeOff" width="20" height="20" id="iconEyeOff"
-                                    class="d-none"></i>
+                                <i data-lucide="eye-off" id="eyeOff" width="20" height="20" class="d-none"></i>
                             </button>
                         </div>
                     </div>
@@ -116,50 +127,57 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="form-check">
                             <input type="checkbox" id="recordar" class="form-check-input">
-                            <label for="recordar" class="form-check-label">Recordar sesión</label>
+                            <label for="recordar" class="form-check-label text-secondary">Recordar sesión</label>
                         </div>
-                        <a href="#" class="login-forgot">¿Olvidó su contraseña?</a>
+                        <a href="#" class="login-forgot text-decoration-none">¿Olvidó su contraseña?</a>
                     </div>
 
-                    <button type="submit" class="btn w-100">
+                    <button type="submit" class="login-btn btn  w-100 py-2 ">
                         Ingresar al sistema
                     </button>
+                    <p id="loginError" class="text-danger mt-2 small" style="display:none;"></p>
                 </form>
+
+                <div class="demo-table card shadow-sm border-1 mb-4">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item login-user">
+                            <p class=" demo-title m-0 small text-secondary">CUENTAS DE
+                                DEMOSTRACIÓN</p>
+                            <p class="demo-text m-0 text-muted x-small">Haga clic en una fila para
+                                autocompletar el formulario</p>
+                        </li>
+                        <li class="list-group-item info-item">
+                            <div class="demo-user-row cursor-pointer" data-email="admin@coopfinanzas.com.co"
+                                data-password="Admin@2026!">
+                                <p class="demo-user-rol m-0">Administrador</p>
+                                <p class="demo-user-email m-0 small">admin@coopfinanzas.com.co</p>
+                                <p class="demo-user-pass m-0 text-muted">Admin@2026!</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item info-item">
+                            <div class="demo-user-row cursor-pointer" data-email="operador@coopfinanzas.com.co"
+                                data-password="Oper@2026!">
+                                <p class="demo-user-rol m-0">Operador</p>
+                                <p class="demo-user-email m-0 small">operador@coopfinanzas.com.co</p>
+                                <p class="demo-user-pass m-0 text-muted">Oper@2026!</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item info-item">
+                            <div class="demo-user-row cursor-pointer" data-email="supervisor@coopfinanzas.com.co"
+                                data-password="Super@2026!">
+                                <p class="demo-user-rol m-0 ">Supervisor</p>
+                                <p class="demo-user-email m-0 small">supervisor@coopfinanzas.com.co</p>
+                                <p class="demo-user-pass m-0 text-muted">Super@2026!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="text-center text-muted x-small" style="font-size: 0.75rem;">
+                    Sistema de uso interno. Acceso restringido a personal autorizado.
+                </p>
+
             </div>
-            <div class="card" style="width: 28rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item login-user">
-                        <p>CUENTAS DE DEMOSTRACIÓN</p>
-                        <p>Haga clic en una fila para autocompletar el formulario</p>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="demo-user-row" data-email="admin@coopfinanzas.com.co" data-password="Admin@2026!">
-                            <p class="demo-user-rol">Administrador</p>
-                            <p class="demo-user-email">admin@coopfinanzas.com.co</p>
-                            <p class="demo-user-pass">Admin@2026!</p>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="demo-user-row" data-email="operador@coopfinanzas.com.co" data-password="Oper@2026!">
-                            <p class="demo-user-rol">Operador</p>
-                            <p class="demo-user-email">operador@coopfinanzas.com.co</p>
-                            <p class="demo-user-pass">Oper@2026!</p>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="demo-user-row" data-email="supervisor@coopfinanzas.com.co"
-                            data-password="Super@2026!">
-                            <p class="demo-user-rol">Supervisor</p>
-                            <p class="demo-user-email">supervisor@coopfinanzas.com.co</p>
-                            <p class="demo-user-pass">Super@2026!</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <P>Sistema de uso interno. Acceso restringido a personal autorizado.</P>
-
-
-
         </main>
 
 

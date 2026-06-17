@@ -6,9 +6,7 @@
 .sidebar-login {
   padding: 2.5rem;
   background-color: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 31.3%;
+  display: none;
 }
 
 .sidebar-login-header {
@@ -83,18 +81,122 @@
 }
 
 .login-form-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.login-user {
-  background-color: var(--mute-color);
-  color: var(--text-mute);
+.login-header-brand {
+  margin-bottom: 29px;
 }
 
+.login-logo {
+  height: 2.5rem;
+  width: auto;
+  margin-right: 7px;
+}
+.login-brand {
+  color: var(--primary-color);
+  font-size: larger;
+}
 
-.login-title{
+#loginAlert {
+  background-color: var(--background-danger);
+  color: var(--color-danger);
+}
+
+.login-right-content {
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-title {
   font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.login-forgot {
+  color: var(--primary-color);
+}
+
+.form-control {
+  border-radius: 13px;
+}
+
+.form-check-input {
+  border: 1px solid var(--text-mute);
+  font-size: larger;
+}
+
+.login-btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 13px;
+  font-size: 14px;
+}
+
+.login-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.demo-table {
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.login-user {
+  background-color: var(--mute-color);
+  color: var(--text-secondary);
+  padding-block: 12px;
+}
+
+.demo-title {
+  letter-spacing: 0.05em;
+}
+
+.demo-text {
+  font-size: 0.7rem;
+}
+
+.info-item {
+  background-color: var(--background-color);
+  padding-block: 12px;
+}
+.demo-user-rol {
+  font-size: 0.65rem;
+  color: var(--primary-color);
+  padding-inline: 8px;
+}
+
+.demo-user-pass {
+  font-size: 11px;
+}
+
+@media (min-width: 769px) {
+  .login-header-brand {
+    display: none;
+  }
+
+  .sidebar-login {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .login-form-container {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .sidebar-login {
+    width: 31.3%;
+  }
+
+  .login-form-container {
+    width: 68.7%;
+  }
 }

@@ -105,6 +105,17 @@
 #loginAlert {
   background-color: var(--background-danger);
   color: var(--color-danger);
+  border: 1px solid #fecaca;
+  border-radius: 13px;
+  padding: 12px 16px;
+}
+
+.circle {
+  width: 19px;
+  height: 17px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .login-right-content {

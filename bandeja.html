@@ -37,7 +37,7 @@
                             <div class="d-flex justify-content-between mb-2">
                                 <i data-lucide="folder" class="card-icon c" width="20" height="20"></i>
                             </div>
-                            <h3 class="card-number mb-0">125</h3>
+                            <h3 class="card-number mb-0" id="cardActivos">125</h3>
                             <p class="card-text-title mb-0 small">Casos activos</p>
                             <p class="card-text-info small mb-0">En proceso de gestión</p>
                         </div>
@@ -51,9 +51,10 @@
                             <div class="accent-icon-2">
                                 <i data-lucide="triangle-alert" class="text-danger" width="20" height="20"></i>
                             </div>
-                            <h3 class="card-number-2 mb-0 text-danger">111</h3>
+                            <h3 class="card-number-2 mb-0 text-danger" id="cardVencidos">111</h3>
                             <p class="card-text-title mb-0 small">SLA vencido</p>
-                            <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Requieren atención urgente</p>
+                            <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Requieren atención urgente
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                             <div class="accent-icon-3">
                                 <i data-lucide="clock" class="card-icon-3" width="20" height="20"></i>
                             </div>
-                            <h3 class="card-number-3 mb-0">2</h3>
+                            <h3 class="card-number-3 mb-0" id="cardProximos">2</h3>
                             <p class="card-text-title mb-0 small">Próximos a vencer</p>
                             <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Vencen en las próximas 24
                                 horas</p>
@@ -76,7 +77,7 @@
                             <div class="accent-icon-4">
                                 <i data-lucide="circle-check-big" class="card-icon-4" width="20" height="20"></i>
                             </div>
-                            <h3 class="card-number-4 mb-0">1</h3>
+                            <h3 class="card-number-4 mb-0" id="cardCerradosHoy">1</h3>
                             <p class="card-text-title mb-0 small">Cerrados hoy</p>
                             <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Resueltos en el día</p>
                         </div>
@@ -86,12 +87,11 @@
 
             <section class="card border-0 shadow-sm rounded-4">
                 <div class="card-body p-4">
-
                     <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
                         <div class="input-group w-100" style="max-width: 600px;">
                             <span class="input-group-text bg-white border-end-0"><i data-lucide="search" width="18"
                                     class="text-muted"></i></span>
-                            <input type="text" class="form-control border-start-0 ps-0"
+                            <input id="inputBuscar" type="text" class="form-control border-start-0 ps-0"
                                 placeholder="Buscar por radicado o nombre del asociado...">
                         </div>
                         <button class="btn  d-flex align-items-center gap-2">
@@ -122,73 +122,25 @@
                                     <th scope="col" class="fw-semibold">ACCIÓN</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="fw-medium text-dark">FPQRS-2026-04758</td>
-                                    <td class="text-muted">07/05/2026</td>
-                                    <td><span class="text-success fw-medium">Felicitación</span></td>
-                                    <td>Atención al Asociado</td>
-                                    <td>Atención Presencial</td>
-                                    <td class="text-muted">Sandra Milena Aguirre...</td>
-                                    <td><span class="badge rounded-pill bg-light text-secondary border">Cerrado</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="d-inline-flex align-items-center gap-1 text-secondary small">
-                                            <div style="width: 6px; height: 6px; border-radius: 50%;"
-                                                class="bg-secondary"></div> Cerrado
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-medium text-dark">FPQRS-2026-04290</td>
-                                    <td class="text-muted">07/05/2026</td>
-                                    <td><span style="color: #8b5cf6;" class="fw-medium">Sugerencia</span></td>
-                                    <td>Pagos y Transferencias</td>
-                                    <td>Transferencias Naci...</td>
-                                    <td class="text-muted">Yolanda Cecilia Prada...</td>
-                                    <td><span
-                                            class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary-subtle">Radicado</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="d-inline-flex align-items-center gap-1 text-success small">
-                                            <div style="width: 6px; height: 6px; border-radius: 50%;"
-                                                class="bg-success"></div> En tiempo
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-medium text-dark">FPQRS-2026-04700</td>
-                                    <td class="text-muted">06/05/2026</td>
-                                    <td><span style="color: #8b5cf6;" class="fw-medium">Sugerencia</span></td>
-                                    <td>Canales Digitales</td>
-                                    <td>Portal Web</td>
-                                    <td class="text-muted">Patricia Inés Londoño...</td>
-                                    <td><span
-                                            class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary-subtle">Radicado</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="d-inline-flex align-items-center gap-1 text-warning small">
-                                            <div style="width: 6px; height: 6px; border-radius: 50%;"
-                                                class="bg-warning"></div> Próximo a vencer
-                                        </span>
-                                    </td>
-                                </tr>
+                            <tbody id="tablaCasos">
                             </tbody>
                         </table>
                     </div>
 
-                    <nav aria-label="Navegación de páginas de la tabla"
-                        class="mt-4 d-flex justify-content-between align-items-center">
-                        <span class="text-muted small">Mostrando 1 a 10 de 125 registros</span>
-                        <ul class="pagination pagination-sm mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
-                                <a class="page-link" href="#">Siguiente</a>
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>

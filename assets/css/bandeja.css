@@ -1,18 +1,111 @@
-.case-contenedor{
-    margin-left: auto;
-    margin-right: auto;
+.case-contenedor {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.title-case{
-    font-weight: 400;
-    font-size: x-large;
+.title-case {
+  font-weight: 400;
+  font-size: x-large;
 }
 
-.title-text-case{
-    color: var(--text-mute);
+.title-text-case {
+  color: var(--text-mute);
 }
 .case-btn-header {
-    background-color:red;
-    /* border: none;
-    padding: 10px; */
+  background-color: var(--secondary-color);
+  border-radius: 13px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  height: 100%;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.25s ease-in-out;
+}
+
+.card-header:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 5px 17px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 5px 17px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 5px 17px 0px rgba(0, 0, 0, 0.1);
+}
+.card-icon {
+  color: var(--primary-color);
+}
+
+.card-number {
+  color: var(--primary-color);
+  font-weight: 300;
+}
+
+.accent-icon-2 {
+  background-color: var(--accent-danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.card-icon-2 {
+  color: var(--primary-color);
+}
+
+.card-number-2 {
+  font-weight: 300;
+}
+
+.accent-icon-3 {
+  background-color: var(--accent-warning);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.card-icon-3 {
+  color: var(--color-warning);
+}
+
+.card-number-3 {
+  color: var(--color-warning);
+  font-weight: 300;
+}
+
+.accent-icon-4 {
+  background-color: var(--accent-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.card-icon-4 {
+  color: var(--color-success);
+}
+
+.card-number-4 {
+  color: var(--color-success);
+  font-weight: 300;
+}
+
+.card-text-title {
+}
+
+.card-text-info {
+  font-size: 0.75rem;
+  color: var(--text-mute);
 }

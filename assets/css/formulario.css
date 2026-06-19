@@ -1,0 +1,51 @@
+.header {
+  background-color: var(--primary-color);
+  display: flex;
+}
+
+.header-info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-logo {
+  width: 32px;
+  height: auto;
+}
+
+.title-body {
+  font-weight: normal;
+  font-size: x-large;
+}
+
+.alert-info {
+  background-color: var(--accent-info);
+  color: var(--color-info);
+}
+
+.alert-info-text{
+    font-size: .75rem;
+    line-height: 1rem;
+    margin: 0;
+}
+
+.body-info{
+    width: 100%;
+}
+
+.icon-form{
+    color: var(--primary-color);
+    width: 17px;
+}
+
+.inp-form{
+    background-color: var(--background-color);
+}
+
+.auth-text{
+    display: flex;
+    
+    padding: 10px;
+    border: 1px solid var(--text-secondary);
+}

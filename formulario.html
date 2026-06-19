@@ -13,10 +13,10 @@
 
 <body>
 
-    <header class="navbar bg-dark py-3 mb-4 shadow-sm">
-        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+    <header class="header py-3 mb-4 shadow-sm">
+        <div class="header-info container-fluid px-4">
             <div class="d-flex align-items-center gap-2">
-                <i data-lucide="shield-check" class="text-white"></i>
+                <img class="form-logo" src="../assets/img/logo.webp" alt="GestorFPQRS">
                 <div class="text-white">
                     <h1 class="h6 mb-0">GestorFPQRS</h1>
                     <small class="text-white-50" style="font-size: 0.75rem;">CoopFinanzas — Portal de Atención al
@@ -30,34 +30,34 @@
         </div>
     </header>
 
-    <main class="container py-4">
-        <div class="row justify-content-center">
+    <main class="body-form container py-4">
+        <div class="body-info row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8">
 
                 <section class="mb-4">
-                    <h2 class="fs-3 mb-2">Registrar caso FPQRS</h2>
+                    <h2 class="title-body mb-2">Registrar caso FPQRS</h2>
                     <p class="text-secondary">Diligencie el formulario para radicar su Felicitación, Petición, Queja,
                         Reclamo o Sugerencia. Los campos marcados con <span class="text-danger">*</span> son
                         obligatorios.</p>
                 </section>
 
                 <div
-                    class="alert alert-primary bg-primary-subtle border-primary-subtle text-primary-emphasis d-flex gap-3 align-items-start p-3 mb-4 rounded-3">
-                    <i data-lucide="info" class="mt-1 flex-shrink-0"></i>
+                    class="alert-info alert alert-primary border-primary-subtle d-flex gap-3 align-items-start p-3 mb-4 rounded-4">
+                    <i data-lucide="info" class="mt-1"></i>
                     <div>
                         <h6 class="mb-1">Información importante</h6>
-                        <small>Al enviar este formulario, su caso será radicado y recibirá un número de seguimiento.
+                        <p class="alert-info-text">Al enviar este formulario, su caso será radicado y recibirá un número
+                            de seguimiento.
                             Nuestro equipo le contactará según los tiempos de respuesta establecidos por la
-                            Superintendencia Financiera de Colombia.</small>
+                            Superintendencia Financiera de Colombia.</p>
                     </div>
                 </div>
 
                 <form action="#" method="POST">
-
                     <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
                         <div
                             class="card-header bg-transparent border-bottom border-secondary-subtle p-4 d-flex align-items-center gap-3">
-                            <i data-lucide="user" class="text-secondary"></i>
+                            <i data-lucide="user" class="icon-form"></i>
                             <div>
                                 <h3 class="h6 mb-0">Datos personales</h3>
                                 <small class="text-secondary">Información del asociado que registra el caso</small>
@@ -69,16 +69,19 @@
                                 <div class="col-12 col-md-6">
                                     <label for="tipoId" class="form-label text-dark">Tipo de identificación <span
                                             class="text-danger">*</span></label>
-                                    <select id="tipoId" class="form-select text-secondary">
-                                        <option selected disabled>Seleccionar...</option>
+                                    <select id="tipoId" class="inp-form form-select">
+                                        <option selected>Seleccionar...</option>
                                         <option value="CC">Cédula de Ciudadanía</option>
                                         <option value="CE">Cédula de Extranjería</option>
+                                        <option value="NIT">NIT</option>
+                                        <option value="PA">Pasaporte</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="numId" class="form-label text-dark">Número de identificación <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="numId" placeholder="Ej: 1082456789">
+                                    <input type="text" class="inp-form form-control" id="numId"
+                                        placeholder="Ej: 1082456789">
                                 </div>
                             </div>
 
@@ -86,7 +89,7 @@
                                 <div class="col-12">
                                     <label for="nombre" class="form-label text-dark">Nombre completo <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="nombre"
+                                    <input type="text" class="inp-form form-control" id="nombre"
                                         placeholder="Nombres y apellidos completos">
                                 </div>
                             </div>
@@ -97,21 +100,22 @@
                                             class="text-danger">*</span></label>
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Le enviaremos
                                         confirmación y actualizaciones a este correo</div>
-                                    <input type="email" class="form-control" id="correo"
+                                    <input type="email" class="inp-form form-control" id="correo"
                                         placeholder="correo@ejemplo.com">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="celular" class="form-label text-dark mb-0">Número de celular <span
                                             class="text-danger">*</span></label>
                                     <div class="form-text mb-2 d-none d-md-block">&nbsp;</div>
-                                    <input type="tel" class="form-control" id="celular" placeholder="3XXXXXXXXX">
+                                    <input type="tel" class="inp-form form-control" id="celular"
+                                        placeholder="3XXXXXXXXX">
                                 </div>
                             </div>
 
                             <div class="row g-4">
                                 <div class="col-12">
                                     <label for="direccion" class="form-label text-dark">Dirección de residencia</label>
-                                    <input type="text" class="form-control" id="direccion"
+                                    <input type="text" class="inp-form form-control" id="direccion"
                                         placeholder="Calle, carrera, número, ciudad">
                                 </div>
                             </div>
@@ -121,7 +125,7 @@
                     <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
                         <div
                             class="card-header bg-transparent border-bottom border-secondary-subtle p-4 d-flex align-items-center gap-3">
-                            <i data-lucide="briefcase" class="text-secondary"></i>
+                            <i data-lucide="briefcase" class="icon-form"></i>
                             <div>
                                 <h3 class="h6 mb-0">Datos del caso</h3>
                                 <small class="text-secondary">Describa detalladamente su solicitud para una atención más
@@ -136,10 +140,10 @@
                                             class="text-danger">*</span></label>
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Qué tipo de
                                         comunicación desea radicar?</div>
-                                    <select id="tipoCaso" class="form-select text-secondary">
-                                        <option selected disabled>Seleccionar tipo de caso...</option>
+                                    <select id="tipoCaso" class="inp-form form-select text-secondary">
+                                        <option selected>Seleccionar tipo de caso...</option>
                                         <option>Petición</option>
-                                        <option>Queja</option>
+                                        <option >Queja</option>
                                         <option>Reclamo</option>
                                         <option>Sugerencia</option>
                                     </select>
@@ -149,7 +153,7 @@
                                             class="text-danger">*</span></label>
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Sobre qué
                                         servicio de la cooperativa es su caso?</div>
-                                    <select id="servicio" class="form-select text-secondary">
+                                    <select id="servicio" class="inp-form form-select text-secondary">
                                         <option selected disabled>Seleccionar servicio...</option>
                                         <option>Ahorros</option>
                                         <option>Créditos</option>
@@ -163,8 +167,12 @@
                                             class="text-danger">*</span></label>
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione
                                         primero el servicio para ver las categorías disponibles</div>
-                                    <select id="categoria" class="form-select text-secondary">
-                                        <option selected disabled>Seleccionar categoría...</option>
+                                    <select id="categoria" class="inp-form form-select text-secondary">
+                                        <option selected disabled>App Móvil</option>
+                                        <option selected disabled>Portal Web</option>
+                                        <option selected disabled>Cajero Automático</option>
+                                        <option selected disabled>Banca Telefónica</option>
+
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -172,7 +180,7 @@
                                             class="text-danger">*</span></label>
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione la
                                         subcategoría que mejor describe su caso</div>
-                                    <select id="subcategoria" class="form-select text-secondary">
+                                    <select id="subcategoria" class="inp-form form-select text-secondary">
                                         <option selected disabled>Seleccionar subcategoría...</option>
                                     </select>
                                 </div>
@@ -185,7 +193,7 @@
                                     <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Incluya
                                         fechas, montos, números de transacción y cualquier detalle relevante que
                                         facilite la gestión de su caso</div>
-                                    <textarea class="form-control text-secondary" id="descripcion" rows="4"
+                                    <textarea class="inp-form form-control text-secondary" id="descripcion" rows="4"
                                         placeholder="Describa su caso con el mayor detalle posible. Ej: El día 3 de mayo realicé un pago PSE por valor de $2.350.000 con código de transacción PSE-20260503-8847. El dinero fue debitado de mi cuenta pero no fue acreditado en el banco destino..."></textarea>
                                 </div>
                             </div>
@@ -211,7 +219,7 @@
 
                     <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
                         <div class="card-body p-4">
-                            <div class="form-check d-flex gap-3 align-items-start mb-0">
+                            <div class="auth-text form-check mb-0">
                                 <input class="form-check-input mt-1 shadow-none" type="checkbox" id="autorizacion"
                                     style="width: 1.25rem; height: 1.25rem;">
                                 <label class="form-check-label text-secondary" for="autorizacion"

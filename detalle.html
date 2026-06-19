@@ -1,13 +1,322 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Poner los demas metas relevantes -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GestorFPQRS - Gestión de Casos Financieros</title>
 </head>
+
 <body>
-    
+    <div class="d-flex min-vh-100">
+
+        <!-- Sidebar compartido -->
+        <div id="sidebar"></div>
+
+        <!-- Contenido principal -->
+        <main class="detalle-contenedor flex-grow-1 overflow-auto">
+
+            <!-- ── BREADCRUMB ── -->
+            <nav aria-label="breadcrumb" class="detalle-breadcrumb px-4 pt-3">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="bandeja.html" class="breadcrumb-link">Bandeja de Casos</a>
+                    </li>
+                    <li class="breadcrumb-item active" id="breadcrumbId">FPQRS-2026-001</li>
+                </ol>
+            </nav>
+
+            <div class="px-4 pb-4 pt-2">
+
+                <!-- ── HEADER DEL CASO ── -->
+                <header class="detalle-header mb-3">
+                    <div class="d-flex flex-wrap align-items-start gap-3 justify-content-between">
+
+                        <div>
+                            <!-- ID + badges de estado -->
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                <h1 class="detalle-titulo mb-0" id="detalleCasoId">FPQRS-2026-001</h1>
+                                <span class="badge-estado" id="detalleBadgeEstado">Abierto</span>
+                                <span class="badge-tipo" id="detalleBadgeTipo">Queja</span>
+                                <span class="badge-sla" id="detalleBadgeSla">Vencido</span>
+                            </div>
+                            <!-- Subtítulo -->
+                            <p class="detalle-subtitulo mb-0" id="detalleSubtitulo">
+                                Radicado el 01/06/2026 · Canal: Web
+                            </p>
+                        </div>
+
+                        <!-- Botón reasignar -->
+                        <button class="btn detalle-btn-reasignar" id="btnReasignar">
+                            <i class="bi bi-person-fill-up"></i> Reasignar
+                        </button>
+
+                    </div>
+                </header>
+
+                <!-- ── ALERTA SLA VENCIDO ── -->
+                <div class="alert detalle-alerta-sla d-flex gap-2 mb-3" id="alertaSla" role="alert"
+                    style="display:none !important;">
+                    <i class="bi bi-exclamation-triangle-fill mt-1 flex-shrink-0"></i>
+                    <div>
+                        <strong>SLA vencido — Atención urgente requerida</strong>
+                        <p class="mb-0 small" id="alertaSlaTexto">La fecha límite de respuesta ya pasó. Este caso
+                            requiere acción inmediata.</p>
+                    </div>
+                </div>
+
+                <!-- ── LAYOUT PRINCIPAL: contenido + panel derecho ── -->
+                <div class="row g-3">
+
+                    <!-- Columna izquierda — info + tabs -->
+                    <div class="col-lg-8">
+
+                        <!-- Datos del Asociado -->
+                        <section class="detalle-card mb-3" aria-label="Datos del asociado">
+                            <h2 class="detalle-card-titulo">
+                                <i class="bi bi-person-circle"></i> Datos del Asociado
+                            </h2>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <p class="detalle-label">NOMBRE</p>
+                                    <p class="detalle-valor" id="asociadoNombre">—</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="detalle-label">IDENTIFICACIÓN</p>
+                                    <p class="detalle-valor" id="asociadoDocumento">—</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="detalle-label">CORREO</p>
+                                    <p class="detalle-valor" id="asociadoCorreo">—</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="detalle-label">CELULAR</p>
+                                    <p class="detalle-valor" id="asociadoCelular">—</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Datos del Caso -->
+                        <section class="detalle-card mb-3" aria-label="Datos del caso">
+                            <h2 class="detalle-card-titulo">
+                                <i class="bi bi-briefcase"></i> Datos del Caso
+                            </h2>
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">SERVICIO</p>
+                                    <p class="detalle-valor" id="casoServicio">—</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">CATEGORÍA</p>
+                                    <p class="detalle-valor" id="casoCategoria">—</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">SUBCATEGORÍA</p>
+                                    <p class="detalle-valor" id="casoSubcategoria">—</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">RESPONSABLE</p>
+                                    <p class="detalle-valor" id="casoResponsable">—</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">PRIORIDAD</p>
+                                    <p class="detalle-valor" id="casoPrioridad">—</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="detalle-label">FECHA LÍMITE SLA</p>
+                                    <p class="detalle-valor detalle-fecha-sla" id="casoFechaLimite">—</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Tabs: Descripción / Comentarios / Adjuntos / Historial / Respuestas -->
+                        <section class="detalle-card" aria-label="Contenido del caso">
+
+                            <!-- Nav tabs — Bootstrap -->
+                            <ul class="nav detalle-tabs mb-3" id="detalleTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="detalle-tab-btn active" id="tab-descripcion" data-bs-toggle="tab"
+                                        data-bs-target="#panel-descripcion" type="button" role="tab">
+                                        <i class="bi bi-file-text"></i> Descripción
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="detalle-tab-btn" id="tab-comentarios" data-bs-toggle="tab"
+                                        data-bs-target="#panel-comentarios" type="button" role="tab">
+                                        <i class="bi bi-chat-left-text"></i> Comentarios
+                                        <span class="tab-badge" id="badgeComentarios">0</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="detalle-tab-btn" id="tab-adjuntos" data-bs-toggle="tab"
+                                        data-bs-target="#panel-adjuntos" type="button" role="tab">
+                                        <i class="bi bi-paperclip"></i> Adjuntos
+                                        <span class="tab-badge" id="badgeAdjuntos">0</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="detalle-tab-btn" id="tab-historial" data-bs-toggle="tab"
+                                        data-bs-target="#panel-historial" type="button" role="tab">
+                                        <i class="bi bi-clock-history"></i> Historial
+                                        <span class="tab-badge" id="badgeHistorial">0</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="detalle-tab-btn" id="tab-respuestas" data-bs-toggle="tab"
+                                        data-bs-target="#panel-respuestas" type="button" role="tab">
+                                        <i class="bi bi-reply"></i> Respuestas
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <!-- Contenido de los tabs -->
+                            <div class="tab-content" id="detalleTabContent">
+
+                                <!-- Tab Descripción -->
+                                <div class="tab-pane fade show active" id="panel-descripcion" role="tabpanel">
+                                    <p class="detalle-label mb-2">DESCRIPCIÓN DEL CASO</p>
+                                    <p class="detalle-descripcion" id="casoDescripcion">—</p>
+                                </div>
+
+                                <!-- Tab Comentarios -->
+                                <div class="tab-pane fade" id="panel-comentarios" role="tabpanel">
+                                    <div id="listaComentarios">
+                                        <p class="text-muted small text-center py-3">No hay comentarios aún.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Adjuntos -->
+                                <div class="tab-pane fade" id="panel-adjuntos" role="tabpanel">
+                                    <div id="listaAdjuntos">
+                                        <p class="text-muted small text-center py-3">No hay adjuntos en este caso.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Historial -->
+                                <div class="tab-pane fade" id="panel-historial" role="tabpanel">
+                                    <div id="listaHistorial">
+                                        <p class="text-muted small text-center py-3">Sin historial disponible.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Respuestas -->
+                                <div class="tab-pane fade" id="panel-respuestas" role="tabpanel">
+                                    <div id="listaRespuestas">
+                                        <p class="text-muted small text-center py-3">No hay respuestas registradas.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- Columna derecha — Panel de acciones -->
+                    <aside class="col-lg-4" aria-label="Panel de acciones">
+
+                        <!-- Cambiar estado -->
+                        <div class="detalle-card mb-3">
+                            <h3 class="detalle-accion-titulo">
+                                <i class="bi bi-gear"></i> Cambiar estado
+                            </h3>
+                            <select class="form-select form-select-sm" id="selectEstado">
+                                <option value="Abierto">Abierto</option>
+                                <option value="En proceso">En proceso</option>
+                                <option value="Cerrado">Cerrado</option>
+                                <option value="Anulado">Anulado</option>
+                            </select>
+                        </div>
+
+                        <!-- Cambiar prioridad -->
+                        <div class="detalle-card mb-3">
+                            <h3 class="detalle-accion-titulo">
+                                <i class="bi bi-exclamation-triangle"></i> Cambiar prioridad
+                            </h3>
+                            <p class="detalle-accion-desc">Solo se muestran las prioridades permitidas. El SLA se
+                                recalculará automáticamente.</p>
+                            <select class="form-select form-select-sm" id="selectPrioridad">
+                                <option value="Alta">Prioridad actual: Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+                        </div>
+
+                        <!-- Reasignar caso -->
+                        <div class="detalle-card mb-3">
+                            <h3 class="detalle-accion-titulo">
+                                <i class="bi bi-person-fill-up"></i> Reasignar caso
+                            </h3>
+                            <p class="detalle-accion-desc">Transfiera este caso a otro operador. El cambio quedará
+                                registrado en la trazabilidad.</p>
+                            <select class="form-select form-select-sm" id="selectResponsable">
+                                <!-- Se llena dinámicamente con los usuarios -->
+                            </select>
+                        </div>
+
+                        <!-- Registrar observación -->
+                        <div class="detalle-card mb-3">
+                            <h3 class="detalle-accion-titulo">
+                                <i class="bi bi-chat-square-text"></i> Registrar observación
+                            </h3>
+                            <textarea class="form-control form-control-sm mb-2" id="txtObservacion" rows="3"
+                                placeholder="Escriba su observación interna o respuesta al asociado..."></textarea>
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="chkNotificar">
+                                <label class="form-check-label small" for="chkNotificar">
+                                    Notificar esta respuesta al asociado
+                                </label>
+                            </div>
+                            <button class="btn detalle-btn-observacion w-100" id="btnRegistrarObservacion">
+                                Registrar observación
+                            </button>
+                        </div>
+
+                        <!-- Acciones finales -->
+                        <div class="detalle-card">
+                            <p class="detalle-label mb-2">ACCIONES FINALES</p>
+                            <button class="btn detalle-btn-cerrar w-100 mb-2" id="btnCerrarCaso">
+                                <i class="bi bi-lock-fill"></i> Cerrar caso
+                            </button>
+                            <button class="btn detalle-btn-anular w-100" id="btnAnularCaso">
+                                <i class="bi bi-x-circle"></i> Anular caso
+                            </button>
+                        </div>
+
+                    </aside>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal confirmación cerrar/anular -->
+    <div class="modal fade" id="modalConfirmar" tabindex="-1" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="modalConfirmarLabel">Confirmar acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalConfirmarTexto">¿Está seguro que desea continuar?</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-sm" id="btnConfirmarAccion">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/data.js"></script>
+        <script src="assets/js/bandeja.js"></script>
+        <script>lucide.createIcons();</script>
+
 </body>
+
 </html>

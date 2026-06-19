@@ -2,14 +2,268 @@
 <html lang="es">
 
 <head>
-    <!-- Poner los demas metas relevantes -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/formulario.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <title>GestorFPQRS - Gestión de Casos Financieros</title>
 </head>
 
 <body>
+
+    <header class="navbar bg-dark py-3 mb-4 shadow-sm">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <i data-lucide="shield-check" class="text-white"></i>
+                <div class="text-white">
+                    <h1 class="h6 mb-0">GestorFPQRS</h1>
+                    <small class="text-white-50" style="font-size: 0.75rem;">CoopFinanzas — Portal de Atención al
+                        Asociado</small>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2 text-white">
+                <span class="bg-success rounded-circle" style="width: 8px; height: 8px; display: inline-block;"></span>
+                <span class="small">Servicio disponible</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8">
+
+                <section class="mb-4">
+                    <h2 class="fs-3 mb-2">Registrar caso FPQRS</h2>
+                    <p class="text-secondary">Diligencie el formulario para radicar su Felicitación, Petición, Queja,
+                        Reclamo o Sugerencia. Los campos marcados con <span class="text-danger">*</span> son
+                        obligatorios.</p>
+                </section>
+
+                <div
+                    class="alert alert-primary bg-primary-subtle border-primary-subtle text-primary-emphasis d-flex gap-3 align-items-start p-3 mb-4 rounded-3">
+                    <i data-lucide="info" class="mt-1 flex-shrink-0"></i>
+                    <div>
+                        <h6 class="mb-1">Información importante</h6>
+                        <small>Al enviar este formulario, su caso será radicado y recibirá un número de seguimiento.
+                            Nuestro equipo le contactará según los tiempos de respuesta establecidos por la
+                            Superintendencia Financiera de Colombia.</small>
+                    </div>
+                </div>
+
+                <form action="#" method="POST">
+
+                    <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
+                        <div
+                            class="card-header bg-transparent border-bottom border-secondary-subtle p-4 d-flex align-items-center gap-3">
+                            <i data-lucide="user" class="text-secondary"></i>
+                            <div>
+                                <h3 class="h6 mb-0">Datos personales</h3>
+                                <small class="text-secondary">Información del asociado que registra el caso</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <div class="row g-4 mb-4">
+                                <div class="col-12 col-md-6">
+                                    <label for="tipoId" class="form-label text-dark">Tipo de identificación <span
+                                            class="text-danger">*</span></label>
+                                    <select id="tipoId" class="form-select text-secondary">
+                                        <option selected disabled>Seleccionar...</option>
+                                        <option value="CC">Cédula de Ciudadanía</option>
+                                        <option value="CE">Cédula de Extranjería</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="numId" class="form-label text-dark">Número de identificación <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="numId" placeholder="Ej: 1082456789">
+                                </div>
+                            </div>
+
+                            <div class="row g-4 mb-4">
+                                <div class="col-12">
+                                    <label for="nombre" class="form-label text-dark">Nombre completo <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="nombre"
+                                        placeholder="Nombres y apellidos completos">
+                                </div>
+                            </div>
+
+                            <div class="row g-4 mb-4">
+                                <div class="col-12 col-md-6">
+                                    <label for="correo" class="form-label text-dark mb-0">Correo electrónico <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Le enviaremos
+                                        confirmación y actualizaciones a este correo</div>
+                                    <input type="email" class="form-control" id="correo"
+                                        placeholder="correo@ejemplo.com">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="celular" class="form-label text-dark mb-0">Número de celular <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text mb-2 d-none d-md-block">&nbsp;</div>
+                                    <input type="tel" class="form-control" id="celular" placeholder="3XXXXXXXXX">
+                                </div>
+                            </div>
+
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <label for="direccion" class="form-label text-dark">Dirección de residencia</label>
+                                    <input type="text" class="form-control" id="direccion"
+                                        placeholder="Calle, carrera, número, ciudad">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
+                        <div
+                            class="card-header bg-transparent border-bottom border-secondary-subtle p-4 d-flex align-items-center gap-3">
+                            <i data-lucide="briefcase" class="text-secondary"></i>
+                            <div>
+                                <h3 class="h6 mb-0">Datos del caso</h3>
+                                <small class="text-secondary">Describa detalladamente su solicitud para una atención más
+                                    ágil</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <div class="row g-4 mb-4">
+                                <div class="col-12 col-md-6">
+                                    <label for="tipoCaso" class="form-label text-dark mb-0">Tipo de caso <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Qué tipo de
+                                        comunicación desea radicar?</div>
+                                    <select id="tipoCaso" class="form-select text-secondary">
+                                        <option selected disabled>Seleccionar tipo de caso...</option>
+                                        <option>Petición</option>
+                                        <option>Queja</option>
+                                        <option>Reclamo</option>
+                                        <option>Sugerencia</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="servicio" class="form-label text-dark mb-0">Servicio <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Sobre qué
+                                        servicio de la cooperativa es su caso?</div>
+                                    <select id="servicio" class="form-select text-secondary">
+                                        <option selected disabled>Seleccionar servicio...</option>
+                                        <option>Ahorros</option>
+                                        <option>Créditos</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row g-4 mb-4">
+                                <div class="col-12 col-md-6">
+                                    <label for="categoria" class="form-label text-dark mb-0">Categoría <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione
+                                        primero el servicio para ver las categorías disponibles</div>
+                                    <select id="categoria" class="form-select text-secondary">
+                                        <option selected disabled>Seleccionar categoría...</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="subcategoria" class="form-label text-dark mb-0">Subcategoría <span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione la
+                                        subcategoría que mejor describe su caso</div>
+                                    <select id="subcategoria" class="form-select text-secondary">
+                                        <option selected disabled>Seleccionar subcategoría...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <label for="descripcion" class="form-label text-dark mb-0">Descripción detallada del
+                                        caso <span class="text-danger">*</span></label>
+                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Incluya
+                                        fechas, montos, números de transacción y cualquier detalle relevante que
+                                        facilite la gestión de su caso</div>
+                                    <textarea class="form-control text-secondary" id="descripcion" rows="4"
+                                        placeholder="Describa su caso con el mayor detalle posible. Ej: El día 3 de mayo realicé un pago PSE por valor de $2.350.000 con código de transacción PSE-20260503-8847. El dinero fue debitado de mi cuenta pero no fue acreditado en el banco destino..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
+                        <div class="card-header bg-transparent border-bottom border-secondary-subtle p-4">
+                            <h3 class="h6 mb-0">Documentos de soporte</h3>
+                            <small class="text-secondary">Adjunte capturas de pantalla, comprobantes u otros documentos
+                                que respalden su caso (máx. 5 archivos, 5 MB c/u)</small>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="border border-2 border-secondary-subtle rounded-4 p-5 text-center d-flex flex-column align-items-center justify-content-center"
+                                style="border-style: dashed !important; cursor: pointer;">
+                                <i data-lucide="upload" class="text-secondary mb-3" width="28" height="28"></i>
+                                <p class="mb-1 text-dark">Arrastre archivos aquí o haga clic para seleccionar</p>
+                                <small class="text-secondary" style="font-size: 0.75rem;">PDF, JPG, PNG, DOCX — máximo 5
+                                    MB por archivo</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
+                        <div class="card-body p-4">
+                            <div class="form-check d-flex gap-3 align-items-start mb-0">
+                                <input class="form-check-input mt-1 shadow-none" type="checkbox" id="autorizacion"
+                                    style="width: 1.25rem; height: 1.25rem;">
+                                <label class="form-check-label text-secondary" for="autorizacion"
+                                    style="font-size: 0.9rem;">
+                                    Autorizo a <strong class="text-dark">CoopFinanzas</strong> para recolectar,
+                                    almacenar, usar y tratar mis datos personales conforme a la Política de Tratamiento
+                                    de Datos Personales y la Ley 1581 de 2012, con el fin de gestionar mi solicitud
+                                    FPQRS y contactarme durante el proceso de atención.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-5">
+                        <div
+                            class="card-body p-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                            <div>
+                                <h3 class="h6 mb-0 text-dark">¿Listo para radicar su caso?</h3>
+                                <small class="text-secondary">Recibirá un número de radicado y confirmación por correo
+                                    electrónico</small>
+                            </div>
+                            <button type="submit"
+                                class="btn text-white px-4 py-2 rounded-3 d-flex align-items-center justify-content-center gap-2"
+                                style="background-color: var(--primary-color, #1e3a5f);">
+                                Radicar caso FPQRS <i data-lucide="chevron-right" width="18" height="18"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-top border-secondary-subtle py-4 mt-auto">
+        <div class="container-fluid px-4">
+            <div class="row justify-content-center">
+                <div
+                    class="col-12 col-lg-10 col-xl-8 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                    <small class="text-secondary">© 2026 CoopFinanzas. Sistema FPQRS — Normativa SFC Colombia</small>
+                    <small class="text-secondary">¿Necesita ayuda? Llame al <strong class="text-dark">01 8000 123
+                            456</strong></small>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/bandeja.js"></script>
+    <script>lucide.createIcons();</script>
+
 
 </body>
 

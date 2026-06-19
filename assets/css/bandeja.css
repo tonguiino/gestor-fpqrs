@@ -139,6 +139,18 @@
   color: var(--text-mute);
 }
 
+.table-header{
+
+}
+
+.table-title{
+  font-size: xx-small;
+}
+
+.fila-caso{
+  font-size: .75rem;
+}
+
 @keyframes rec-glow {
   0% {
     opacity: 1;

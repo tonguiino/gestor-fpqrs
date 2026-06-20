@@ -14,7 +14,6 @@ $(document).ready(function () {
       return;
     }
 
-
     const datosServicio = CATALOGO_SERVICIOS[servicioSeleccionado];
 
     if (datosServicio) {

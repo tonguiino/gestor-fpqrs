@@ -44,8 +44,31 @@
 }
 
 .auth-text{
-    display: flex;
-    
-    padding: 10px;
-    border: 1px solid var(--text-secondary);
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:16px;
+    border:1px solid #d1d5db;
+    border-radius:16px;
+}
+
+.auth-text input{
+    width:17px;
+    height:17px;
+    margin-top:3px;
+    flex-shrink:0;
+    border: 1px solid var(--text-mute);
+}
+
+.auth-text .form-check-label{
+    font-size: 0.9rem;
+}
+
+.auth-text .form-check-label a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-text .form-check-label a:hover{
+    text-decoration: underline;
 }

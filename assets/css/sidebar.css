@@ -117,3 +117,9 @@
 .log-out {
   font-size: smaller;
 }
+
+@media (max-width: 767px) {
+  .sidebar-extra {
+    display: none;
+  }
+}

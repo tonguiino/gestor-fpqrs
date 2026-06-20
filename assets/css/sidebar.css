@@ -1,3 +1,9 @@
+#sidebar {
+  width: 15rem;
+  min-width: 15rem;
+  flex-shrink: 0;
+}
+
 .sidebar {
   background-color: var(--primary-color);
   width: 15rem;
@@ -6,7 +12,7 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  position: fixed; /*revisarlo porque podria funciona*/
+  position: fixed;
 }
 
 .sidebar-header {

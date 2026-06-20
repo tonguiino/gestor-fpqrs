@@ -10,21 +10,72 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <title>GestorFPQRS - Gestión de Casos Financieros</title>
     <style>
-        body { background-color: #f8f9fa; font-family: system-ui, -apple-system, sans-serif; }
-        .text-orange { color: #f97316; } 
-        .fs-7 { font-size: 0.85rem; }
-        .fs-8 { font-size: 0.7rem; }
-        .nav-tabs .nav-link { color: #6c757d; border: none; border-bottom: 2px solid transparent; padding: 1rem 1.5rem; font-weight: 500; }
-        .nav-tabs .nav-link.active { color: #0f172a; border-bottom: 2px solid #0f172a; background: transparent; }
-        .nav-tabs .nav-link:hover:not(.active) { border-bottom: 2px solid #cbd5e1; }
-        .label-sm { font-size: 0.65rem; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
-        .value-md { font-size: 0.95rem; color: #1e293b; margin-bottom: 0; }
-        .btn-dark-blue { background-color: #1e3a5f; color: white; border: none; }
-        .btn-dark-blue:hover { background-color: #152b47; color: white; }
+        body {
+            background-color: #f8f9fa;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .text-orange {
+            color: #f97316;
+        }
+
+        .fs-7 {
+            font-size: 0.85rem;
+        }
+
+        .fs-8 {
+            font-size: 0.7rem;
+        }
+
+        .nav-tabs .nav-link {
+            color: #6c757d;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #0f172a;
+            border-bottom: 2px solid #0f172a;
+            background: transparent;
+        }
+
+        .nav-tabs .nav-link:hover:not(.active) {
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .label-sm {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .value-md {
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 0;
+        }
+
+        .btn-dark-blue {
+            background-color: #1e3a5f;
+            color: white;
+            border: none;
+        }
+
+        .btn-dark-blue:hover {
+            background-color: #152b47;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="sidebar" class=""></div>
     <main class="container-xl mb-5 flex-grow-1">
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start mb-4 gap-3">
@@ -354,7 +405,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/data.js"></script>
-    <script src="assets/js/bandeja.js"></script>
+    <script src="assets/js/detalle.js"></script>
     <script>lucide.createIcons();</script>
 
 </body>

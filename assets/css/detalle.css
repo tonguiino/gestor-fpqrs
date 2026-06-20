@@ -1,0 +1,362 @@
+/* =============================================
+   detalle.css — Estilos de la vista de detalle
+   ============================================= */
+
+/* ── Layout general ── */
+.detalle-contenedor {
+  background-color: var(--background-color);
+}
+
+/* ── Breadcrumb ── */
+.detalle-breadcrumb {
+  background: transparent;
+}
+
+.breadcrumb-link {
+  color: var(--color-info);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  font-size: 0.85rem;
+  color: var(--text-mute);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--text-secondary);
+}
+
+/* ── Header del caso ── */
+.detalle-header {
+  padding-top: 0.5rem;
+}
+
+.detalle-titulo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.detalle-subtitulo {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Badges del header */
+.badge-estado,
+.badge-tipo,
+.badge-sla {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.badge-estado {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-tipo {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.badge-sla-vencido {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.badge-sla-proximo {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-sla-ok {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* Botón reasignar del header */
+.detalle-btn-reasignar {
+  border: 1px solid var(--border-color);
+  background-color: #fff;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.detalle-btn-reasignar:hover {
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* ── Alerta SLA vencido ── */
+.detalle-alerta-sla {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  color: #991b1b;
+  font-size: 0.85rem;
+}
+
+/* ── Cards del detalle ── */
+.detalle-card {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.detalle-card-titulo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detalle-card-titulo i {
+  color: var(--text-light);
+}
+
+/* ── Labels y valores ── */
+.detalle-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.detalle-valor {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.detalle-fecha-sla {
+  color: var(--color-danger);
+  font-weight: 600;
+}
+
+.detalle-descripcion {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ── Tabs ── */
+.detalle-tabs {
+  border-bottom: 1px solid var(--border-color);
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.detalle-tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: -1px;
+}
+
+.detalle-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.detalle-tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Badge numérico en tabs */
+.tab-badge {
+  background-color: var(--background-color);
+  color: var(--text-mute);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ── Historial ── */
+.historial-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.historial-item:last-child {
+  border-bottom: none;
+}
+
+.historial-punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-info);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.historial-accion {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.historial-meta {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+/* ── Comentarios ── */
+.comentario-item {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.comentario-autor {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 2px;
+}
+
+.comentario-texto {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.comentario-fecha {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+/* ── Panel acciones (columna derecha) ── */
+.detalle-accion-titulo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detalle-accion-titulo i {
+  color: var(--text-light);
+}
+
+.detalle-accion-desc {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.detalle-btn-observacion {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.detalle-btn-observacion:hover {
+  background-color: var(--hover-color);
+  color: #fff;
+}
+
+.detalle-btn-cerrar {
+  background-color: #16a34a;
+  color: #fff;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.detalle-btn-cerrar:hover {
+  background-color: #15803d;
+  color: #fff;
+}
+
+.detalle-btn-anular {
+  background-color: #fff;
+  color: var(--color-danger);
+  border: 1px solid #fca5a5;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.detalle-btn-anular:hover {
+  background-color: #fee2e2;
+  border-color: var(--color-danger);
+}
+
+/* ── Select del panel ── */
+.detalle-card .form-select {
+  border-radius: 8px;
+  font-size: 0.82rem;
+  border-color: var(--border-color);
+}
+
+.detalle-card .form-control {
+  border-radius: 8px;
+  font-size: 0.82rem;
+  border-color: var(--border-color);
+  resize: vertical;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  .detalle-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .detalle-tab-btn {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .detalle-titulo {
+    font-size: 1.1rem;
+  }
+
+  .detalle-card {
+    padding: 1rem;
+  }
+}

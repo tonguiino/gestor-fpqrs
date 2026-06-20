@@ -1,6 +1,13 @@
+.layout-principal {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .case-contenedor {
-  margin-left: auto;
-  margin-right: auto;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .title-case {

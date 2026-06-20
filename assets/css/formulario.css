@@ -72,3 +72,24 @@
 .auth-text .form-check-label a:hover{
     text-decoration: underline;
 }
+
+/* Agregar al final de formulario.css */
+ 
+/* Error del card de autorización */
+.card-auth-error {
+  border-color: var(--color-danger) !important;
+  background-color: #fff5f5 !important;
+  transition: all 0.2s;
+}
+ 
+/* Select deshabilitado — visual más claro */
+select:disabled {
+  background-color: #f8f9fa;
+  color: #adb5bd;
+  cursor: not-allowed;
+}
+ 
+ 
+.inp-form.is-invalid {
+  border-color: var(--color-danger);
+}

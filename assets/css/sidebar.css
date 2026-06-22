@@ -43,7 +43,8 @@
 
 .sidebar-section {
   flex: 1;
-  padding-inline: 1rem;
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
   overflow: hidden;
 }
 .sidebar-title-menu {
@@ -55,22 +56,22 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: .6rem;
+  gap: 0.1rem;
 }
 
 .sidebar-link {
   display: flex;
+  align-items: center;
   gap: 0.9em;
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
+  padding: 8px 10px;
 }
 .sidebar-link.active {
-  background-color: var(--accent-color);
-  color: var(--text-light);
-  border-radius: 6px;
-  margin: 0 8px;
-  padding: 9px 10px;
+  background-color: var(--hover-color);
+  color: var(--secondary-color);
+  border-radius: 12px;
 }
 
 .sidebar-link-disabled {
@@ -87,13 +88,13 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 1rem;
 }
 .user {
   padding: 0.3rem;
   width: 1.7rem;
   height: auto;
-  background-color: #4B617F;
+  background-color: #4b617f;
   border-radius: 50%;
   color: var(--secondary-color);
 }
@@ -116,4 +117,15 @@
 
 .log-out {
   font-size: smaller;
+}
+
+.red-circle {
+  width: 18px;
+  height: 18px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-small;
 }

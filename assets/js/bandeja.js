@@ -86,12 +86,9 @@ $(document).ready(function () {
     renderizarTabla(casosFiltrados);
   });
 
-  //Guardar info
-  // $(document).on("click", ".fila-caso", function () {
-  //   const id = $(this).data("id");
-  //   sessionStorage.setItem("casoSeleccionado", id);
-  //   window.location.href = "detalle.html";
-  // });
+  $('#isFilterBtn').on('click', function () {
+    $('#filterInfo').toggleClass('active')
+  })
 
   $(document).on("click", ".btn-ver-caso", function () {
     const id = $(this).data("id");

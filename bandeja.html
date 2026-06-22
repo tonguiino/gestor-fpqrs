@@ -103,44 +103,44 @@
                         <div class="row mt-2 row-cols-4">
                             <div class="col">
                                 <label class="small" for="">ESTADO</label>
-                                <select class="form-select rounded-4" name="" id="">
+                                <select class="form-select rounded-4" id="filtroEstado">
                                     <option value="">Todos</option>
-                                    <option value="">Abierto</option>
-                                    <option value="">En proceso</option>
-                                    <option value="">Cerrado</option>
+                                    <option value="Abierto">Abierto</option>
+                                    <option value="En proceso">En proceso</option>
+                                    <option value="Cerrado">Cerrado</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label class="small" for="">TIPO DE CASO</label>
-                                <select class="form-select rounded-4" name="" id="">
+                                <select class="form-select rounded-4" id="filtroTipo">
                                     <option value="">Todos</option>
-                                    <option value="">Felicitación</option>
-                                    <option value="">Petición</option>
-                                    <option value="">Queja</option>
-                                    <option value="">Reclamo</option>
-                                    <option value="">Sugerencia</option>
+                                    <option value="Felicitación">Felicitación</option>
+                                    <option value="Petición">Petición</option>
+                                    <option value="Queja">Queja</option>
+                                    <option value="Reclamo">Reclamo</option>
+                                    <option value="Sugerencia">Sugerencia</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label class="small" for="">SERVICIO</label>
-                                <select class="form-select rounded-4" name="" id="">
+                                <select class="form-select rounded-4" id="filtroServicio">
                                     <option value="">Todos</option>
-                                    <option value="">Crédito</option>
-                                    <option value="">Ahorro y Captación</option>
-                                    <option value="">Canales Digitales</option>
-                                    <option value="">Atención al Asociado</option>
-                                    <option value="">Pagos y Transferencias</option>
-                                    <option value="">Seguros y Protección</option>
-                                    <option value="">Centrales de Riesgo</option>
-                                    <option value="">Educación Cooperativa</option>
-                                    <option value="">Vinculación y Retiro</option>
-                                    <option value="">Cartera y Cobranza</option>
-                                    <option value="">Certificaciones y Documentos</option>
+                                    <option value="Crédito">Crédito</option>
+                                    <option value="Ahorro y Captación">Ahorro y Captación</option>
+                                    <option value="Canales Digitales">Canales Digitales</option>
+                                    <option value="Atención al Asociado">Atención al Asociado</option>
+                                    <option value="Pagos y Transferencias">Pagos y Transferencias</option>
+                                    <option value="Seguros y Protección">Seguros y Protección</option>
+                                    <option value="Centrales de Riesgo">Centrales de Riesgo</option>
+                                    <option value="Educación Cooperativa">Educación Cooperativa</option>
+                                    <option value="Vinculación y Retiro">Vinculación y Retiro</option>
+                                    <option value="Cartera y Cobranza">Cartera y Cobranza</option>
+                                    <option value="Certificaciones y Documentos">Certificaciones y Documentos</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label class="small" for="">RESPONSABLE</label>
-                                <select class="form-select rounded-4" name="" id="">
+                                <select class="form-select rounded-4" id="filtroResponsable">
                                     <option value="">Todos</option>
                                     <option value="">Radicado</option>
                                 </select>
@@ -149,20 +149,20 @@
                         <div class="row">
                             <div class="col">
                                 <label class="small" for="">PRIORIDAD</label>
-                                <select class="form-select rounded-4" name="" id="">
+                                <select class="form-select rounded-4" id="filtroPrioridad">
                                     <option value="">Todos</option>
-                                    <option value="">Baja</option>
-                                    <option value="">Normal</option>
-                                    <option value="">Alta</option>
-                                    <option value="">Crítica</option>
+                                    <option value="Baja">Baja</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Alta">Alta</option>
+                                    <option value="Crítica">Crítica</option>
                                 </select>
                             </div>
                             <div class="filter-chbx col">
                                 <div>
-                                    <input type="checkbox"> <label class="expired" for="">Solo vencidos</label>
+                                    <input id="filtroVencidos" type="checkbox"> <label class="expired" for="">Solo vencidos</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox"> <label class="will-expired" for="">Proximos a vencer</label>
+                                    <input id="filtroProximos" type="checkbox"> <label class="will-expired" for="">Proximos a vencer</label>
                                 </div>
                             </div>
                         </div>
@@ -174,22 +174,30 @@
                             <thead class="table-header border-top border-secondary-subtle"
                                 style="font-size: 0.75rem; letter-spacing: 0.5px;">
                                 <tr>
-                                    <th scope="col" class="table-title">RADICADO <i data-lucide="chevron-down"
+                                    <th scope="col" class="table-title" data-orden="id">RADICADO <i data-lucide="chevron-down"
                                             width="12"></i></th>
-                                    <th scope="col" class="table-title">FECHA RAD. <i data-lucide="chevron-down"
+                                    <th data-orden="fechaCreacion" scope="col" class="table-title">FECHA RAD. <i data-lucide="chevron-down"
                                             width="12"></i></th>
-                                    <th scope="col" class="table-title">TIPO <i data-lucide="chevron-down"
+                                    <th data-orden="tipo" scope="col" class="table-title">TIPO <i data-lucide="chevron-down"
                                             width="12"></i></th>
-                                    <th scope="col" class="table-title">SERVICIO <i data-lucide="chevron-down"
+                                    <th data-orden="servicio" scope="col" class="table-title">SERVICIO <i data-lucide="chevron-down"
                                             width="12"></i></th>
-                                    <th scope="col" class="table-title">CATEGORÍA</th>
-                                    <th scope="col" class="table-title">SUBCATEGORÍA</th>
-                                    <th scope="col" class="table-title">ASOCIADO</th>
-                                    <th scope="col" class="table-title">RESPONSABLE</th>
-                                    <th scope="col" class="table-title">PRIORIDAD</th>
-                                    <th scope="col" class="table-title">ESTADO</th>
-                                    <th scope="col" class="table-title">LÍMITE SLA</th>
-                                    <th scope="col" class="table-title text-center">SEMÁFORO</th>
+                                    <th data-orden="categoria" scope="col" class="table-title">CATEGORÍA <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="subcategoria" scope="col" class="table-title">SUBCATEGORÍA <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="asociado" scope="col" class="table-title">ASOCIADO <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="responsable" scope="col" class="table-title">RESPONSABLE <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="prioridad" scope="col" class="table-title">PRIORIDAD <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="estado" scope="col" class="table-title">ESTADO <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th data-orden="fechaLimite" scope="col" class="table-title">LÍMITE SLA <i data-lucide="chevron-down"
+                                            width="12"></i></th>
+                                    <th scope="col" class="table-title text-center">SEMÁFORO <i data-lucide="chevron-down"
+                                            width="12"></i></th>
                                     <th scope="col" class="table-title">ACCIÓN</th>
                                 </tr>
                             </thead>

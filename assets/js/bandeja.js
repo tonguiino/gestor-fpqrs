@@ -5,6 +5,11 @@ $(document).ready(function () {
 
   const casos = JSON.parse(localStorage.getItem("casos")) || [];
 
+  let ordenActual = { columna: null, direccion: 'asc' };
+    // ── Paginación ──
+  const CASOS_POR_PAGINA = 10;
+  let paginaActual = 1;
+
   const casosActivos = casos.filter(function (c) {
     return c.estado !== "Cerrado" && c.estado !== "Anulado";
   }).length;
@@ -72,33 +77,84 @@ $(document).ready(function () {
       tbody.append(fila);
     });
   }
-  renderizarTabla(casos);
+
+function obtenerCasosFiltrados() {
+  const busqueda = $("#inputBuscar").val().toUpperCase().trim();
+  const filtroEstado = $("#filtroEstado").val();
+  const filtroTipo = $("#filtroTipo").val();
+  const filtroServicio = $("#filtroServicio").val();
+  const filtroResponsable = $("#filtroResponsable").val();
+  const filtroPrioridad = $("#filtroPrioridad").val();
+  const soloVencidos = $("#filtroVencidos").is(":checked");
+  const soloProximos = $("#filtroProximos").is(":checked");
+
+  let resultado = casos.filter(function (c) {
+    if (busqueda) {
+      const coincide = c.id.toUpperCase().includes(busqueda) ||
+                       c.asociado.toUpperCase().includes(busqueda);
+      if (!coincide) return false;
+    }
+    if (filtroEstado && c.estado !== filtroEstado) return false;
+    if (filtroTipo && c.tipo !== filtroTipo) return false;
+    if (filtroServicio && c.servicio !== filtroServicio) return false;
+    if (filtroResponsable && c.responsable !== filtroResponsable) return false;
+    if (filtroPrioridad && c.prioridad !== filtroPrioridad) return false;
+    if (soloVencidos && c.sla !== "vencido") return false;
+    if (soloProximos && c.sla !== "proximo") return false;
+    return true;
+  });
+
+  if (ordenActual.columna) {
+    resultado = resultado.slice().sort(function (a, b) {
+      let valA = (a[ordenActual.columna] || '').toString().toLowerCase();
+      let valB = (b[ordenActual.columna] || '').toString().toLowerCase();
+      let comp = valA.localeCompare(valB, 'es');
+      return ordenActual.direccion === 'asc' ? comp : -comp;
+    });
+  }
+
+  return resultado;
+}
+
+function actualizarVista() {
+  paginaActual = 1;
+  const filtrados = obtenerCasosFiltrados();
+  renderizarPagina(filtrados, paginaActual);
+}
+
+  // renderizarTabla(casos);
 
   //Funcion buscar
-  $("#inputBuscar").on("input", function () {
-    const termino = $(this).val().toUpperCase().trim();
-    const casosFiltrados = casos.filter(function (c) {
-      return (
-        c.id.toUpperCase().includes(termino) ||
-        c.asociado.toUpperCase().includes(termino)
-      );
-    });
-    renderizarTabla(casosFiltrados);
-  });
+$("#inputBuscar").on("input", actualizarVista);
 
   $('#isFilterBtn').on('click', function () {
     $('#filterInfo').toggleClass('active')
   })
+
+  // Filtros selects y checkboxes
+$("#filtroEstado, #filtroTipo, #filtroServicio, #filtroResponsable, #filtroPrioridad")
+  .on("change", actualizarVista);
+$("#filtroVencidos, #filtroProximos").on("change", actualizarVista);
+
+// Ordenamiento por columna
+$(document).on("click", ".table-title[data-orden]", function () {
+  const columna = $(this).data("orden");
+  if (ordenActual.columna === columna) {
+    ordenActual.direccion = ordenActual.direccion === 'asc' ? 'desc' : 'asc';
+  } else {
+    ordenActual.columna = columna;
+    ordenActual.direccion = 'asc';
+  }
+  $(".table-title").removeClass("col-orden-asc col-orden-desc");
+  $(this).addClass(ordenActual.direccion === 'asc' ? 'col-orden-asc' : 'col-orden-desc');
+  actualizarVista();
+});
 
   $(document).on("click", ".btn-ver-caso", function () {
     const id = $(this).data("id");
     sessionStorage.setItem("casoSeleccionado", id);
     window.location.href = "detalle.html";
   });
-
-  // ── Paginación ──
-  const CASOS_POR_PAGINA = 10;
-  let paginaActual = 1;
 
   function renderizarPagina(listaCasos, pagina) {
     const inicio = (pagina - 1) * CASOS_POR_PAGINA;
@@ -115,7 +171,7 @@ $(document).ready(function () {
   }
 
   // Llamar con paginación desde el inicio
-  renderizarPagina(casos, 1);
+actualizarVista();
 
   // Clic en botones de página
   $(document).on("click", ".pag-btn", function (e) {

@@ -14,7 +14,7 @@
 <body>
     <div class="layout-principal">
         <div id="sidebar" class=""></div>
-       <main class="case-contenedor p-4">
+       <main class="case-contenedor">
             <header class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
                 <div>
                     <h1 class="title-case mb-0">Bandeja de Casos</h1>
@@ -88,29 +88,25 @@
             <section class="card border-0 shadow-sm rounded-4">
                 <div class="card-body p-4">
                     <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
-                        <div class="input-group w-100" style="max-width: 600px;">
-                            <span class="input-group-text bg-white border-end-0"><i data-lucide="search" width="18"
+                        <div class="search-inp input-group w-100" style="">
+                            <span class="input-group-text border-end-0"><i data-lucide="search" width="18"
                                     class="text-muted"></i></span>
                             <input id="inputBuscar" type="text" class="form-control border-start-0 ps-0"
                                 placeholder="Buscar por radicado o nombre del asociado...">
                         </div>
-                        <button class="btn  d-flex align-items-center gap-2">
+                        <button class="filter-btn btn d-flex align-items-center gap-2 rounded-4">
                             <i data-lucide="filter" width="16" height="16"></i> Filtros
                         </button>
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0 p-0" style="font-size: 0.85rem;">
+                        <table class="table table-hover align-middle mb-5 p-0" style="font-size: 0.85rem;">
                             <thead class="table-header " style="font-size: 0.75rem; letter-spacing: 0.5px;">
                                 <tr>
-                                    <th scope="col" class="table-title">RADICADO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th scope="col" class="table-title">FECHA RAD. <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th scope="col" class="table-title">TIPO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th scope="col" class="table-title">SERVICIO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
+                                    <th scope="col" class="table-title">RADICADO <i data-lucide="chevron-down" width="12"></i></th>
+                                    <th scope="col" class="table-title">FECHA RAD. <i data-lucide="chevron-down" width="12"></i></th>
+                                    <th scope="col" class="table-title">TIPO <i data-lucide="chevron-down" width="12"></i></th>
+                                    <th scope="col" class="table-title">SERVICIO <i data-lucide="chevron-down" width="12"></i></th>
                                     <th scope="col" class="table-title">CATEGORÍA</th>
                                     <th scope="col" class="table-title">SUBCATEGORÍA</th>
                                     <th scope="col" class="table-title">ASOCIADO</th>
@@ -127,23 +123,41 @@
                         </table>
                     </div>
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+<div class="d-flex flex-column flex-md-row 
+            justify-content-between align-items-center 
+            gap-2 mt-3 pt-3 border-top">
+
+  <!-- Texto informativo izquierda -->
+  <p class="text-muted mb-0" style="font-size: 0.8rem;" id="paginadorInfo">
+    Mostrando 1-5 de 5 casos
+  </p>
+
+  <!-- Botones derecha -->
+  <nav aria-label="Navegación de páginas">
+    <ul class="pagination pagination-sm mb-0 gap-1">
+      <li class="page-item" id="btnPrev">
+        <a class="page-link pag-btn" href="#" aria-label="Anterior">
+          <span aria-hidden="true">‹</span>
+        </a>
+      </li>
+      <li class="page-item active" id="pag1">
+        <a class="page-link pag-btn" href="#">1</a>
+      </li>
+      <li class="page-item" id="pag2">
+        <a class="page-link pag-btn" href="#">2</a>
+      </li>
+      <li class="page-item" id="pag3">
+        <a class="page-link pag-btn" href="#">3</a>
+      </li>
+      <li class="page-item" id="btnNext">
+        <a class="page-link pag-btn" href="#" aria-label="Siguiente">
+          <span aria-hidden="true">›</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+</div>
 
                 </div>
             </section>

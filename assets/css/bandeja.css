@@ -8,6 +8,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 1.5rem 5.2rem;
 }
 
 .title-case {
@@ -146,16 +147,54 @@
   color: var(--text-mute);
 }
 
-.table-header{
-
+.filter-btn {
+  border: 1px solid var(--border-color);
+}
+.search-inp {
+  max-width: 100%;
 }
 
-.table-title{
+.search-inp .form-control {
+  background-color: var(--background-color);
+}
+
+.table-header {
+}
+
+.table-title {
   font-size: xx-small;
 }
 
-.fila-caso{
-  font-size: .75rem;
+.fila-caso {
+  font-size: 0.75rem;
+}
+
+.table.table-hover .fila-caso td {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  vertical-align: middle;
+}
+
+/* ── Paginador ── */
+.pag-btn {
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  min-width: 32px;
+  text-align: center;
+}
+
+.page-item.active .pag-btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.pag-btn:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
 @keyframes rec-glow {

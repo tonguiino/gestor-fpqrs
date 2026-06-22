@@ -1,9 +1,12 @@
 .layout-container {
   display: flex;
+  min-height: 100vh;
+  overflow: hidden;
 }
 .detalle-container {
   margin-top: 1.2rem;
   padding-inline: 5rem;
+  overflow: hidden;
 }
 
 .bread-text-case {

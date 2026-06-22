@@ -176,6 +176,14 @@
   background-color: var(--background-color);
   padding-block: 12px;
 }
+.demo-user-row {
+  cursor: pointer;
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .demo-user-rol {
   font-size: 0.65rem;
   color: var(--primary-color);

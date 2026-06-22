@@ -63,7 +63,7 @@ $(document).ready(function () {
           <td>${semaforoHtml}</td>
           <td>
             <button type="button" data-id="${caso.id}" class="btn-ver-caso translate-middle-y me-2 border-0 bg-transparent">
-                  <i data-lucide="eye" id="eyeOpen" width="20" height="20"></i>
+                  <i data-lucide="eye" class='icon-eye' id="eyeOpen" width="14" height="14"></i>
             </button>
           </td>
       </tr>

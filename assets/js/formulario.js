@@ -216,10 +216,16 @@ function radicarCaso() {
   };
 
   const casosExistentes = JSON.parse(localStorage.getItem('casos')) || [];
-  casosExistentes.unshift(nuevoCaso); // unshift agrega al inicio del array
+  casosExistentes.unshift(nuevoCaso);
+
+  // ✅ Fix 1 — guardar el ARRAY completo, no solo el caso nuevo
   localStorage.setItem('casos', JSON.stringify(casosExistentes));
 
-  mostrarConfirmacion(radicado);
+  // ✅ Fix 2 — guardar el caso en sessionStorage para confirmacion.js
+  sessionStorage.setItem('ultimoRadicado', JSON.stringify(nuevoCaso));
+
+  // ✅ Fix 3 — redirigir a confirmación
+  window.location.href = 'confirmacion.html';
 }
 
 function calcularFechaLimite(fechaInicio, diasHabiles) {
@@ -238,41 +244,6 @@ function calcularFechaLimite(fechaInicio, diasHabiles) {
   return fecha.toISOString().split('T')[0];
 }
 
-function mostrarConfirmacion(radicado) {
-  $('.body-form').html(`
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-10 col-xl-8 text-center py-5">
-
-        <div class="mb-4" style="font-size: 4rem;">✅</div>
-
-        <h2 class="mb-2" style="color: var(--color-success);">
-          ¡Caso radicado exitosamente!
-        </h2>
-
-        <p class="text-secondary mb-4">
-          Su caso ha sido registrado en nuestro sistema. Hemos enviado una confirmación al correo electrónico suministrado.
-        </p>
-
-        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 d-inline-block">
-          <p class="text-secondary small mb-1">Número de radicado</p>
-          <h3 class="mb-0" style="color: var(--primary-color); font-size: 1.5rem; letter-spacing: 0.05em;">
-            ${radicado}
-          </h3>
-        </div>
-
-        <p class="text-secondary small mb-4">
-          Guarde este número para hacer seguimiento de su caso.<br>
-          Nuestro equipo le contactará en los próximos <strong>15 días hábiles</strong>.
-        </p>
-
-        <a href="formulario.html" class="btn px-4 py-2" 
-           style="background-color: var(--primary-color); color: white; border-radius: 10px;">
-          Radicar otro caso
-        </a>
-
-      </div>
-    </div>
-  `);
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function limpiarError(selector) {
+  $(selector).removeClass('is-invalid');
 }

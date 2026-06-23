@@ -11,7 +11,7 @@
   padding: 1.5rem 5.2rem;
 }
 
-
+/* Cabecera y titulos */
 .title-case {
   font-weight: 400;
   font-size: x-large;
@@ -26,8 +26,9 @@
   border-radius: 13px;
 }
 
+/* Estructura de tarjetas */
 .card-header {
-  border: 1px solid-blue;
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,22 +63,12 @@
   border: 1px solid #bbf7d0;
 }
 
-.card-icon {
-  color: var(--primary-color);
+.card-text-info {
+  font-size: 0.75rem;
+  color: var(--text-mute);
 }
 
-.card-icon-2 {
-  color: var(--primary-color);
-}
-
-.card-icon-3 {
-  color: var(--color-warning);
-}
-
-.card-icon-4 {
-  color: var(--color-success);
-}
-
+/* Numeros de las tarjetas */
 .card-number {
   color: var(--primary-color);
   font-weight: 300;
@@ -101,12 +92,21 @@
   font-variant-numeric: tabular-nums;
 }
 
-.card-text-title {
+/* Iconos y acentos */
+.card-icon {
+  color: var(--primary-color);
 }
 
-.card-text-info {
-  font-size: 0.75rem;
-  color: var(--text-mute);
+.card-icon-2 {
+  color: var(--primary-color);
+}
+
+.card-icon-3 {
+  color: var(--color-warning);
+}
+
+.card-icon-4 {
+  color: var(--color-success);
 }
 
 .accent-icon-2 {
@@ -150,6 +150,15 @@
   animation: rec-glow 2s infinite ease-in-out;
 }
 
+/* Busqueda y filtro */
+.search-inp {
+  max-width: 100%;
+}
+
+.search-inp .form-control {
+  background-color: var(--background-color);
+}
+
 .filter-btn {
   border: 1px solid var(--border-color);
 }
@@ -168,14 +177,6 @@
   justify-content: flex-end;
 }
 
-.search-inp {
-  max-width: 100%;
-}
-
-.search-inp .form-control {
-  background-color: var(--background-color);
-}
-
 .expired {
   font-size: small;
   color: #dc2626;
@@ -186,11 +187,19 @@
   color: #d97706;
 }
 
-.table-header {
+/* Tabla de datos */
+.table .table-hover {
+  font-size: 0.85rem;
+}
+
+.table-header .border-top {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
 }
 
 .table-title {
   font-size: xx-small;
+  cursor: pointer;
 }
 
 .fila-caso {
@@ -203,8 +212,13 @@
   vertical-align: middle;
 }
 
-.icon-eye{
+.icon-eye {
   color: var(--text-mute);
+}
+
+/* Paginacion */
+.paginate-text {
+  font-size: 0.8rem;
 }
 
 .pag-btn {
@@ -228,6 +242,7 @@
   color: var(--primary-color);
 }
 
+/* Animaciones */
 @keyframes rec-glow {
   0% {
     opacity: 1;

@@ -5,8 +5,8 @@ $(document).ready(function () {
 
   const casos = JSON.parse(localStorage.getItem("casos")) || [];
 
-  let ordenActual = { columna: null, direccion: 'asc' };
-    // ── Paginación ──
+  let ordenActual = { columna: null, direccion: "asc" };
+  // ── Paginación ──
   const CASOS_POR_PAGINA = 10;
   let paginaActual = 1;
 
@@ -51,12 +51,13 @@ $(document).ready(function () {
       const estadoBadge = obtenerBadgeEstado(caso.estado);
       const semaforoHtml = obtenerSemaforo(caso.sla);
       const prioridadHtml = obtenerBadgePrioridad(caso.prioridad);
+      const tipoBadge = obtenerBadgeTipo(caso.tipo);
 
       const fila = `
       <tr class='fila-caso' data-id="${caso.id}">
           <td>${caso.id}</td>
           <td>${formatearFecha(caso.fechaCreacion)}</td>
-          <td>${caso.tipo}</td>
+          <td>${tipoBadge}</td> 
           <td>${caso.servicio}</td>
           <td>${caso.categoria}</td>
           <td>${caso.subcategoria}</td>
@@ -78,77 +79,82 @@ $(document).ready(function () {
     });
   }
 
-function obtenerCasosFiltrados() {
-  const busqueda = $("#inputBuscar").val().toUpperCase().trim();
-  const filtroEstado = $("#filtroEstado").val();
-  const filtroTipo = $("#filtroTipo").val();
-  const filtroServicio = $("#filtroServicio").val();
-  const filtroResponsable = $("#filtroResponsable").val();
-  const filtroPrioridad = $("#filtroPrioridad").val();
-  const soloVencidos = $("#filtroVencidos").is(":checked");
-  const soloProximos = $("#filtroProximos").is(":checked");
+  function obtenerCasosFiltrados() {
+    const busqueda = $("#inputBuscar").val().toUpperCase().trim();
+    const filtroEstado = $("#filtroEstado").val();
+    const filtroTipo = $("#filtroTipo").val();
+    const filtroServicio = $("#filtroServicio").val();
+    const filtroResponsable = $("#filtroResponsable").val();
+    const filtroPrioridad = $("#filtroPrioridad").val();
+    const soloVencidos = $("#filtroVencidos").is(":checked");
+    const soloProximos = $("#filtroProximos").is(":checked");
 
-  let resultado = casos.filter(function (c) {
-    if (busqueda) {
-      const coincide = c.id.toUpperCase().includes(busqueda) ||
-                       c.asociado.toUpperCase().includes(busqueda);
-      if (!coincide) return false;
-    }
-    if (filtroEstado && c.estado !== filtroEstado) return false;
-    if (filtroTipo && c.tipo !== filtroTipo) return false;
-    if (filtroServicio && c.servicio !== filtroServicio) return false;
-    if (filtroResponsable && c.responsable !== filtroResponsable) return false;
-    if (filtroPrioridad && c.prioridad !== filtroPrioridad) return false;
-    if (soloVencidos && c.sla !== "vencido") return false;
-    if (soloProximos && c.sla !== "proximo") return false;
-    return true;
-  });
-
-  if (ordenActual.columna) {
-    resultado = resultado.slice().sort(function (a, b) {
-      let valA = (a[ordenActual.columna] || '').toString().toLowerCase();
-      let valB = (b[ordenActual.columna] || '').toString().toLowerCase();
-      let comp = valA.localeCompare(valB, 'es');
-      return ordenActual.direccion === 'asc' ? comp : -comp;
+    let resultado = casos.filter(function (c) {
+      if (busqueda) {
+        const coincide =
+          c.id.toUpperCase().includes(busqueda) ||
+          c.asociado.toUpperCase().includes(busqueda);
+        if (!coincide) return false;
+      }
+      if (filtroEstado && c.estado !== filtroEstado) return false;
+      if (filtroTipo && c.tipo !== filtroTipo) return false;
+      if (filtroServicio && c.servicio !== filtroServicio) return false;
+      if (filtroResponsable && c.responsable !== filtroResponsable)
+        return false;
+      if (filtroPrioridad && c.prioridad !== filtroPrioridad) return false;
+      if (soloVencidos && c.sla !== "vencido") return false;
+      if (soloProximos && c.sla !== "proximo") return false;
+      return true;
     });
+
+    if (ordenActual.columna) {
+      resultado = resultado.slice().sort(function (a, b) {
+        let valA = (a[ordenActual.columna] || "").toString().toLowerCase();
+        let valB = (b[ordenActual.columna] || "").toString().toLowerCase();
+        let comp = valA.localeCompare(valB, "es");
+        return ordenActual.direccion === "asc" ? comp : -comp;
+      });
+    }
+
+    return resultado;
   }
 
-  return resultado;
-}
-
-function actualizarVista() {
-  paginaActual = 1;
-  const filtrados = obtenerCasosFiltrados();
-  renderizarPagina(filtrados, paginaActual);
-}
+  function actualizarVista() {
+    paginaActual = 1;
+    const filtrados = obtenerCasosFiltrados();
+    renderizarPagina(filtrados, paginaActual);
+  }
 
   // renderizarTabla(casos);
 
   //Funcion buscar
-$("#inputBuscar").on("input", actualizarVista);
+  $("#inputBuscar").on("input", actualizarVista);
 
-  $('#isFilterBtn').on('click', function () {
-    $('#filterInfo').toggleClass('active')
-  })
+  $("#isFilterBtn").on("click", function () {
+    $("#filterInfo").toggleClass("active");
+  });
 
   // Filtros selects y checkboxes
-$("#filtroEstado, #filtroTipo, #filtroServicio, #filtroResponsable, #filtroPrioridad")
-  .on("change", actualizarVista);
-$("#filtroVencidos, #filtroProximos").on("change", actualizarVista);
+  $(
+    "#filtroEstado, #filtroTipo, #filtroServicio, #filtroResponsable, #filtroPrioridad",
+  ).on("change", actualizarVista);
+  $("#filtroVencidos, #filtroProximos").on("change", actualizarVista);
 
-// Ordenamiento por columna
-$(document).on("click", ".table-title[data-orden]", function () {
-  const columna = $(this).data("orden");
-  if (ordenActual.columna === columna) {
-    ordenActual.direccion = ordenActual.direccion === 'asc' ? 'desc' : 'asc';
-  } else {
-    ordenActual.columna = columna;
-    ordenActual.direccion = 'asc';
-  }
-  $(".table-title").removeClass("col-orden-asc col-orden-desc");
-  $(this).addClass(ordenActual.direccion === 'asc' ? 'col-orden-asc' : 'col-orden-desc');
-  actualizarVista();
-});
+  // Ordenamiento por columna
+  $(document).on("click", ".table-title[data-orden]", function () {
+    const columna = $(this).data("orden");
+    if (ordenActual.columna === columna) {
+      ordenActual.direccion = ordenActual.direccion === "asc" ? "desc" : "asc";
+    } else {
+      ordenActual.columna = columna;
+      ordenActual.direccion = "asc";
+    }
+    $(".table-title").removeClass("col-orden-asc col-orden-desc");
+    $(this).addClass(
+      ordenActual.direccion === "asc" ? "col-orden-asc" : "col-orden-desc",
+    );
+    actualizarVista();
+  });
 
   $(document).on("click", ".btn-ver-caso", function () {
     const id = $(this).data("id");
@@ -171,7 +177,7 @@ $(document).on("click", ".table-title[data-orden]", function () {
   }
 
   // Llamar con paginación desde el inicio
-actualizarVista();
+  actualizarVista();
 
   // Clic en botones de página
   $(document).on("click", ".pag-btn", function (e) {
@@ -203,14 +209,23 @@ function formatearFecha(fecha) {
 }
 
 function obtenerBadgeEstado(estado) {
-  const clases = {
-    Abierto: "badge-abierto",
-    "En proceso": "badge-en-proceso",
-    Cerrado: "badge-cerrado",
-    Anulado: "badge-anulado",
+  const config = {
+    "Abierto":                  { bg: "#e0f2fe", color: "#0369a1" },
+    "En proceso":               { bg: "#ffedd5", color: "#c2410c" },
+    "En Gestión":               { bg: "#ffedd5", color: "#c2410c" },
+    "Respondido":               { bg: "#e2fbe8", color: "#15803d" },
+    "Pendiente de Información": { bg: "#fef3c7", color: "#b45309" },
+    "Cerrado":                  { bg: "#f3f4f6", color: "#4b5563" },
+    "Anulado":                  { bg: "#fee2e2", color: "#b91c1c" }
   };
-  const clase = clases[estado] || "badge-anulado";
-  return `<span class='px-2 py-1 ${clase}'>${estado}</span>`;
+
+  const c = config[estado] || { bg: "#f3f4f6", color: "#374151" };
+  
+  return `
+    <span style="background:${c.bg}; color:${c.color}; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; display: inline-block; white-space: nowrap;">
+      ${estado}
+    </span>
+  `;
 }
 
 function obtenerSemaforo(sla) {
@@ -240,8 +255,26 @@ function obtenerBadgePrioridad(prioridad) {
   };
   const c = config[prioridad] || config["Baja"];
   return `
-    <span style="background:${c.bg};color:${c.color};padding:2px 8px; border-radius:20px;font-size:0.75rem;font-weight:600;">
+    <span style="background:${c.bg};color:${c.color};padding:2px 8px; border-radius:20px;font-size:0.75rem;">
       ${prioridad}
+    </span>
+  `;
+}
+
+function obtenerBadgeTipo(tipo) {
+  const config = {
+    Felicitación: { bg: "#e2fbe8", color: "#15803d" },
+    Petición: { bg: "#e0f2fe", color: "#0369a1" },
+    Queja: { bg: "#ffedd5", color: "#c2410c" },
+    Reclamo: { bg: "#fee2e2", color: "#b91c1c" },
+    Sugerencia: { bg: "#f3e8ff", color: "#6b21a8" },
+  };
+
+  const c = config[tipo] || { bg: "#f3f4f6", color: "#374151" };
+
+  return `
+    <span style="background:${c.bg}; color:${c.color}; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; display: inline-block;">
+      ${tipo}
     </span>
   `;
 }

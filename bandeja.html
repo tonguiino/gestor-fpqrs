@@ -30,7 +30,6 @@
                     </button>
                 </div>
             </header>
-
             <section class="row g-3 mb-4">
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="card-header rounded-4">
@@ -54,7 +53,7 @@
                             </div>
                             <h3 class="card-number-2 mb-0 text-danger" id="cardVencidos">111</h3>
                             <p class="card-text-title mb-0 small">SLA vencido</p>
-                            <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Requieren atención urgente
+                            <p class="card-text-info small mb-0 fila-caso">Requieren atención urgente
                             </p>
                         </div>
                     </div>
@@ -67,8 +66,9 @@
                             </div>
                             <h3 class="card-number-3 mb-0" id="cardProximos">2</h3>
                             <p class="card-text-title mb-0 small">Próximos a vencer</p>
-                            <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Vencen en las próximas 24
-                                horas</p>
+                            <p class="card-text-info small mb-0 fila-caso">
+                                Vencen en las próximas 24 horas
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             </div>
                             <h3 class="card-number-4 mb-0" id="cardCerradosHoy">1</h3>
                             <p class="card-text-title mb-0 small">Cerrados hoy</p>
-                            <p class="card-text-info small mb-0" style="font-size: 0.75rem;">Resueltos en el día</p>
+                            <p class="card-text-info small mb-0 fila-caso">Resueltos en el día</p>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
             <section class="card border-0 shadow-sm rounded-4">
                 <div class="card-body p-4">
                     <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
-                        <div class="search-inp input-group w-100" style="">
+                        <div class="search-inp input-group w-100">
                             <span class="input-group-text border-end-0"><i data-lucide="search" width="18"
                                     class="text-muted"></i></span>
                             <input id="inputBuscar" type="text" class="form-control border-start-0 ps-0"
@@ -142,7 +142,7 @@
                                 <label class="small" for="">RESPONSABLE</label>
                                 <select class="form-select rounded-4" id="filtroResponsable">
                                     <option value="">Todos</option>
-                                    <option value="">Radicado</option>
+
                                 </select>
                             </div>
                         </div>
@@ -159,10 +159,12 @@
                             </div>
                             <div class="filter-chbx col">
                                 <div>
-                                    <input id="filtroVencidos" type="checkbox"> <label class="expired" for="">Solo vencidos</label>
+                                    <input id="filtroVencidos" type="checkbox"> <label class="expired" for="">Solo
+                                        vencidos</label>
                                 </div>
                                 <div>
-                                    <input id="filtroProximos" type="checkbox"> <label class="will-expired" for="">Proximos a vencer</label>
+                                    <input id="filtroProximos" type="checkbox"> <label class="will-expired"
+                                        for="">Proximos a vencer</label>
                                 </div>
                             </div>
                         </div>
@@ -170,34 +172,69 @@
                     </div>
 
                     <div class="table-responsive ">
-                        <table class="table table-hover align-middle mb-5 p-0" style="font-size: 0.85rem;">
-                            <thead class="table-header border-top border-secondary-subtle"
-                                style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                        <table class="table table-hover align-middle mb-5 p-0">
+                            <thead class="table-header border-top border-secondary-subtle">
                                 <tr>
-                                    <th scope="col" class="table-title" data-orden="id">RADICADO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="fechaCreacion" scope="col" class="table-title">FECHA RAD. <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="tipo" scope="col" class="table-title">TIPO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="servicio" scope="col" class="table-title">SERVICIO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="categoria" scope="col" class="table-title">CATEGORÍA <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="subcategoria" scope="col" class="table-title">SUBCATEGORÍA <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="asociado" scope="col" class="table-title">ASOCIADO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="responsable" scope="col" class="table-title">RESPONSABLE <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="prioridad" scope="col" class="table-title">PRIORIDAD <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="estado" scope="col" class="table-title">ESTADO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th data-orden="fechaLimite" scope="col" class="table-title">LÍMITE SLA <i data-lucide="chevron-down"
-                                            width="12"></i></th>
-                                    <th scope="col" class="table-title text-center">SEMÁFORO <i data-lucide="chevron-down"
-                                            width="12"></i></th>
+                                    <th scope="col" class="table-title" data-orden="id">
+                                        <div class="d-flex align-items-center gap-1">
+                                            RADICADO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="fechaCreacion" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            FECHA RAD. <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="tipo" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            TIPO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="servicio" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            SERVICIO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="categoria" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            CATEGORÍA <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="subcategoria" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            SUBCATEGORÍA <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="asociado" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            ASOCIADO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="responsable" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            RESPONSABLE <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="prioridad" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            PRIORIDAD <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="estado" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            ESTADO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th data-orden="fechaLimite" scope="col" class="table-title">
+                                        <div class="d-flex align-items-center gap-1">
+                                            LÍMITE SLA <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="table-title">
+                                        <div class="d-flex align-items-center justify-content-center gap-1">
+                                            SEMÁFORO <i data-lucide="chevron-down" width="12"></i>
+                                        </div>
+                                    </th>
                                     <th scope="col" class="table-title">ACCIÓN</th>
                                 </tr>
                             </thead>
@@ -206,16 +243,11 @@
                         </table>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row 
-            justify-content-between align-items-center 
-            gap-2 mt-3 pt-3 border-top">
-
-                        <!-- Texto informativo izquierda -->
-                        <p class="text-muted mb-0" style="font-size: 0.8rem;" id="paginadorInfo">
+                    <div
+                        class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 mt-3 pt-3 border-top">
+                        <p class="paginate-text text-muted mb-0" id="paginadorInfo">
                             Mostrando 1-5 de 5 casos
                         </p>
-
-                        <!-- Botones derecha -->
                         <nav aria-label="Navegación de páginas">
                             <ul class="pagination pagination-sm mb-0 gap-1">
                                 <li class="page-item" id="btnPrev">

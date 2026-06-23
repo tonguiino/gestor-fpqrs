@@ -1,3 +1,4 @@
+/* Cabecera y logos */
 .header {
   background-color: var(--primary-color);
   display: flex;
@@ -14,8 +15,18 @@
   height: auto;
 }
 
+.body-info {
+  width: 100%;
+}
+
+/* Textos */
 .small-text {
   font-size: 0.75rem;
+}
+
+.title-body {
+  font-weight: normal;
+  font-size: x-large;
 }
 
 .rounded-circle {
@@ -24,11 +35,7 @@
   display: inline-block;
 }
 
-.title-body {
-  font-weight: normal;
-  font-size: x-large;
-}
-
+/* Alertas de informacion */
 .alert-info {
   background-color: var(--accent-info);
   color: var(--color-info);
@@ -40,10 +47,7 @@
   margin: 0;
 }
 
-.body-info {
-  width: 100%;
-}
-
+/* Formularios */
 .icon-form {
   color: var(--primary-color);
   width: 17px;
@@ -53,6 +57,17 @@
   background-color: var(--background-color);
 }
 
+.inp-form.is-invalid {
+  border-color: var(--color-danger);
+}
+
+select:disabled {
+  background-color: #f8f9fa;
+  color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Subida de archivos */
 .upload-dropzone {
   border: 2px dashed #dee2e6;
   cursor: pointer;
@@ -62,6 +77,8 @@
 .upload-dropzonex:hover {
   border-color: #6c757d;
 }
+
+/* Autorizacion y terminos */
 .auth-text {
   display: flex;
   align-items: flex-start;
@@ -92,25 +109,13 @@
   text-decoration: underline;
 }
 
-.submit-btn {
-  background-color: var(--primary-color);
-}
-/* Agregar al final de formulario.css */
-
-/* Error del card de autorización */
 .card-auth-error {
   border-color: var(--color-danger) !important;
   background-color: #fff5f5 !important;
   transition: all 0.2s;
 }
 
-/* Select deshabilitado — visual más claro */
-select:disabled {
-  background-color: #f8f9fa;
-  color: #adb5bd;
-  cursor: not-allowed;
-}
-
-.inp-form.is-invalid {
-  border-color: var(--color-danger);
+/* Botones */
+.submit-btn {
+  background-color: var(--primary-color);
 }

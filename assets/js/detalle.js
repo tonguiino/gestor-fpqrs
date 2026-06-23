@@ -1,40 +1,22 @@
-// =====================================================
-// detalle.js — Lógica completa de la vista de detalle
-// =====================================================
-
 $(document).ready(function () {
   const usuario = { nombre: "Operador Demo" };
-  // ── 2. CARGAR SIDEBAR ────────────────────────────
   $("#sidebar").load("components/sidebar.html", function () {
     $('.sidebar-link[data-page="detalle"]').addClass("active");
   });
 
-  // ── 3. LEER EL CASO SELECCIONADO ─────────────────
-  // bandeja.js guardó el id en sessionStorage al hacer clic en "Ver"
   const casoId = sessionStorage.getItem("casoSeleccionado");
 
   if (!casoId) {
-    // Si no hay caso seleccionado, volver a bandeja
     window.location.href = "bandeja.html";
     return;
   }
-
-  // Leer todos los casos del localStorage
   const casos = JSON.parse(localStorage.getItem("casos")) || [];
-
-  // Buscar el caso por id — .find() retorna el primer objeto que coincide
   const caso = casos.find(function (c) {
     return c.id === casoId;
   });
 
-  // ── 4. LLENAR EL HTML CON LOS DATOS DEL CASO ─────
-
-  // Header — breadcrumb y título
   $("#detalleCasoId").text(caso.id);
-  // Actualizar el breadcrumb con el id real
   $(".breadcrumb-item.active").text(caso.id);
-
-  // Datos del asociado
   $("#asociadoNombre").text(caso.asociado || "—");
   $("#asociadoDocumento").text(
     (caso.tipoDocumento || "") + " " + (caso.documento || "—"),
@@ -51,20 +33,14 @@ $(document).ready(function () {
   $("#casoPrioridad").text(caso.prioridad || "—");
   $("#casoFechaLimite").text(caso.fechaLimite || "—");
 
-  // Descripción
   $("#casoDescripcion").text(caso.descripcion || "Sin descripción registrada.");
 
-  // ── 5. ALERTA SLA ─────────────────────────────────
-  // Solo mostrar si el sla es 'vencido'
   if (caso.sla === "vencido") {
     $(".header-alert-card").show();
   } else {
     $(".header-alert-card").hide();
   }
 
-  // ── 6. LLENAR SELECTS DEL PANEL DE ACCIONES ───────
-
-  // Select de estado — marcar la opción actual del caso
   $("#selectEstado").empty();
   $.each(ESTADOS, function (i, estado) {
     const opcion = $("<option>").val(estado).text(estado);
@@ -72,7 +48,6 @@ $(document).ready(function () {
     $("#selectEstado").append(opcion);
   });
 
-  // Select de prioridad — marcar la opción actual
   $("#selectPrioridad").empty();
   $.each(PRIORIDADES, function (i, prioridad) {
     const opcion = $("<option>").val(prioridad).text(prioridad);
@@ -80,7 +55,6 @@ $(document).ready(function () {
     $("#selectPrioridad").append(opcion);
   });
 
-  // Select de responsable — llenar con los usuarios del sistema
   $("#selectResponsable").empty();
   $.each(USUARIOS, function (i, u) {
     const opcion = $("<option>").val(u.nombre).text(u.nombre);
@@ -88,22 +62,17 @@ $(document).ready(function () {
     $("#selectResponsable").append(opcion);
   });
 
-  // ── 7. RENDERIZAR TABS ────────────────────────────
 
-  // Historial
   renderizarHistorial(caso.historial || []);
 
-  // Comentarios
   renderizarComentarios(caso.comentarios || []);
 
-  // ── 8. CAMBIAR ESTADO ────────────────────────────
   $("#selectEstado").on("change", function () {
     const nuevoEstado = $(this).val();
     actualizarCaso("estado", nuevoEstado, "Estado cambiado a: " + nuevoEstado);
     mostrarToast("Estado actualizado a: " + nuevoEstado);
   });
 
-  // ── 9. CAMBIAR PRIORIDAD ─────────────────────────
   $("#selectPrioridad").on("change", function () {
     const nuevaPrioridad = $(this).val();
     actualizarCaso(
@@ -114,7 +83,6 @@ $(document).ready(function () {
     mostrarToast("Prioridad actualizada a: " + nuevaPrioridad);
   });
 
-  // ── 10. REASIGNAR CASO ───────────────────────────
   $("#selectResponsable").on("change", function () {
     const nuevoResponsable = $(this).val();
     actualizarCaso(
@@ -122,12 +90,10 @@ $(document).ready(function () {
       nuevoResponsable,
       "Caso reasignado a: " + nuevoResponsable,
     );
-    // Actualizar el texto en la card de datos del caso también
     $("#casoResponsable").text(nuevoResponsable);
     mostrarToast("Caso reasignado a: " + nuevoResponsable);
   });
 
-  // ── 11. REGISTRAR OBSERVACIÓN ────────────────────
   $("#btnRegistrarObservacion").on("click", function () {
     const texto = $("#txtObservacion").val().trim();
     const notificar = $("#notificarAsociado").is(":checked");
@@ -137,7 +103,6 @@ $(document).ready(function () {
       return;
     }
 
-    // Crear el comentario nuevo
     const nuevoComentario = {
       fecha: new Date().toISOString().split("T")[0],
       usuario: usuario.nombre,
@@ -145,7 +110,6 @@ $(document).ready(function () {
       notificado: notificar,
     };
 
-    // Agregar al array de comentarios del caso
     const casosActualizados = JSON.parse(localStorage.getItem("casos")) || [];
     const idx = casosActualizados.findIndex(function (c) {
       return c.id === casoId;
@@ -154,7 +118,6 @@ $(document).ready(function () {
     if (idx !== -1) {
       casosActualizados[idx].comentarios.push(nuevoComentario);
 
-      // También agregar al historial
       casosActualizados[idx].historial.push({
         fecha: new Date().toISOString().split("T")[0],
         usuario: usuario.nombre,
@@ -165,11 +128,9 @@ $(document).ready(function () {
 
       localStorage.setItem("casos", JSON.stringify(casosActualizados));
 
-      // Re-renderizar tabs
       renderizarComentarios(casosActualizados[idx].comentarios);
       renderizarHistorial(casosActualizados[idx].historial);
 
-      // Limpiar el textarea y el checkbox
       $("#txtObservacion").val("");
       $("#notificarAsociado").prop("checked", false);
 
@@ -177,7 +138,6 @@ $(document).ready(function () {
     }
   });
 
-  // ── 12. CERRAR CASO ──────────────────────────────
   $("#btnCerrarCaso").on("click", function () {
     // Configurar el modal de confirmación
     $("#modalConfirmarLabel").text("Cerrar caso");
@@ -190,14 +150,12 @@ $(document).ready(function () {
       .removeClass("btn-danger")
       .addClass("btn-success")
       .text("Sí, cerrar caso")
-      .data("accion", "cerrar"); // guardamos qué acción confirmar
+      .data("accion", "cerrar");
 
-    // Abrir el modal con Bootstrap
     const modal = new bootstrap.Modal($("#modalConfirmar")[0]);
     modal.show();
   });
 
-  // ── 13. ANULAR CASO ──────────────────────────────
   $("#btnAnularCaso").on("click", function () {
     $("#modalConfirmarLabel").text("Anular caso");
     $("#modalConfirmarTexto").text(
@@ -215,7 +173,6 @@ $(document).ready(function () {
     modal.show();
   });
 
-  // ── 14. CONFIRMAR ACCIÓN DEL MODAL ───────────────
   $("#btnConfirmarAccion").on("click", function () {
     const accion = $(this).data("accion");
 
@@ -229,16 +186,10 @@ $(document).ready(function () {
       mostrarToast("Caso anulado");
     }
 
-    // Cerrar el modal
     bootstrap.Modal.getInstance($("#modalConfirmar")[0]).hide();
   });
 });
 
-// =====================================================
-// FUNCIONES AUXILIARES
-// =====================================================
-
-// Actualiza un campo del caso en localStorage y agrega al historial
 function actualizarCaso(campo, valor, accionHistorial) {
   const casoId = sessionStorage.getItem("casoSeleccionado");
   const casos = JSON.parse(localStorage.getItem("casos")) || [];
@@ -247,9 +198,8 @@ function actualizarCaso(campo, valor, accionHistorial) {
   });
 
   if (idx !== -1) {
-    casos[idx][campo] = valor; // actualiza el campo
+    casos[idx][campo] = valor; 
 
-    // Agrega la acción al historial
     casos[idx].historial.push({
       fecha: new Date().toISOString().split("T")[0],
       usuario: JSON.parse(sessionStorage.getItem("usuarioLogueado")).nombre,
@@ -257,13 +207,10 @@ function actualizarCaso(campo, valor, accionHistorial) {
     });
 
     localStorage.setItem("casos", JSON.stringify(casos));
-
-    // Re-renderizar historial con los datos actualizados
     renderizarHistorial(casos[idx].historial);
   }
 }
 
-// Renderiza el historial en el tab correspondiente
 function renderizarHistorial(historial) {
   const lista = $("#listaHistorial");
   lista.empty();
@@ -276,8 +223,6 @@ function renderizarHistorial(historial) {
     );
     return;
   }
-
-  // Mostrar del más reciente al más antiguo — .slice().reverse() no modifica el original
   const historialOrdenado = historial.slice().reverse();
 
   $.each(historialOrdenado, function (i, item) {
@@ -293,7 +238,6 @@ function renderizarHistorial(historial) {
   });
 }
 
-// Renderiza los comentarios en el tab correspondiente
 function renderizarComentarios(comentarios) {
   const lista = $("#listaComentarios");
   lista.empty();
@@ -318,10 +262,7 @@ function renderizarComentarios(comentarios) {
   });
 }
 
-// Muestra un toast de notificación temporal
-// tipo: 'success' (default) o 'error'
 function mostrarToast(mensaje, tipo) {
-  // Si ya hay un toast, lo eliminamos
   $("#toastDetalle").remove();
 
   const bgColor = tipo === "error" ? "#dc2626" : "#16a34a";
@@ -346,12 +287,10 @@ function mostrarToast(mensaje, tipo) {
 
   $("body").append(toast);
 
-  // Aparecer
   setTimeout(function () {
     $("#toastDetalle").css("opacity", 1);
   }, 10);
 
-  // Desaparecer después de 3 segundos
   setTimeout(function () {
     $("#toastDetalle").css("opacity", 0);
     setTimeout(function () {

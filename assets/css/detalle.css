@@ -1,14 +1,21 @@
+/* =========================================
+   1. LAYOUT Y CONTENEDORES PRINCIPALES
+========================================= */
 .layout-container {
   display: flex;
   min-height: 100vh;
   overflow: hidden;
 }
+
 .detalle-container {
   margin-top: 1.2rem;
   padding-inline: 5rem;
   overflow: hidden;
 }
 
+/* =========================================
+   2. ENCABEZADO Y MIGA DE PAN (BREADCRUMB)
+========================================= */
 .bread-text-case {
   color: var(--text-primary);
 }
@@ -18,15 +25,23 @@
   font-weight: normal;
 }
 
+.case-info-header {
+  font-size: smaller;
+}
+
 .btn-header {
   color: var(--primary-color);
   border: 2px solid var(--border-color);
 }
 
-.case-info-header {
-  font-size: smaller;
+.rounded-circle {
+  width: 6px;
+  height: 6px;
 }
 
+/* =========================================
+   3. ALERTAS SUPERIORES
+========================================= */
 .header-alert-card {
   background-color: var(--accent-danger);
   display: flex;
@@ -34,39 +49,21 @@
   align-items: center;
 }
 
-.icon-card-header{
+/* =========================================
+   4. ELEMENTOS GENERALES DE LAS TARJETAS (CARDS)
+========================================= */
+.icon-card-header {
   color: var(--primary-color);
 }
 
-.card-header-title{
+.card-header-title {
   color: var(--text-primary);
-  font-weight: 400 ;
+  font-weight: 400;
   font-size: small;
 }
 
-.card-header-text{
+.card-header-text {
   color: var(--text-primary);
-}
-
-
-
-
-.nav-tabs .nav-link {
-  color: #6c757d;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 1rem 1.5rem;
-  font-weight: 500;
-}
-
-.nav-tabs .nav-link.active {
-  color: #0f172a;
-  border-bottom: 2px solid #0f172a;
-  background: transparent;
-}
-
-.nav-tabs .nav-link:hover:not(.active) {
-  border-bottom: 2px solid #cbd5e1;
 }
 
 .label-sm {
@@ -84,16 +81,13 @@
   margin-bottom: 0;
 }
 
-.btn-dark-blue {
-  background-color: #1e3a5f;
-  color: white;
-  border: none;
+.small-text {
+  font-size: 0.75rem;
 }
 
-.btn-dark-blue:hover {
-  background-color: #152b47;
-  color: white;
-}
+/* =========================================
+   5. TARJETA DE DETALLE Y SISTEMA DE TABS
+========================================= */
 .detalle-card {
   background-color: #fff;
   border: 1px solid var(--border-color);
@@ -101,37 +95,7 @@
   padding: 1.25rem;
 }
 
-.detalle-card-titulo {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.detalle-card-titulo i {
-  color: var(--text-light);
-}
-
-/* ── Labels y valores ── */
-.detalle-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.detalle-descripcion {
-  font-size: 0.875rem;
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-/* ── Tabs ── */
 .detalle-tabs {
   border-bottom: 1px solid var(--border-color);
   gap: 0;
@@ -164,7 +128,6 @@
   font-weight: 600;
 }
 
-/* Badge numérico en tabs */
 .tab-badge {
   background-color: var(--background-color);
   color: var(--text-mute);
@@ -176,7 +139,49 @@
   text-align: center;
 }
 
-/* ── Historial ── */
+/* ── Contenido interno de los Tabs ── */
+.detalle-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.detalle-descripcion {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ── Elementos Dinámicos (Comentarios) ── */
+.comentario-item {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.comentario-autor {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 2px;
+}
+
+.comentario-texto {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.comentario-fecha {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+/* ── Elementos Dinámicos (Historial) ── */
 .historial-item {
   display: flex;
   gap: 12px;
@@ -209,30 +214,18 @@
   color: var(--text-light);
 }
 
-/* ── Comentarios ── */
-.comentario-item {
-  background-color: var(--background-color);
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-bottom: 8px;
+/* =========================================
+   6. BOTONES DE ACCIÓN (PANEL DERECHO)
+========================================= */
+.btn-dark-blue {
+  background-color: #1e3a5f;
+  color: white;
+  border: none;
 }
 
-.comentario-autor {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 2px;
-}
-
-.comentario-texto {
-  font-size: 0.82rem;
-  color: var(--text-primary);
-  margin-bottom: 2px;
-}
-
-.comentario-fecha {
-  font-size: 0.7rem;
-  color: var(--text-light);
+.btn-dark-blue:hover {
+  background-color: #152b47;
+  color: white;
 }
 
 .detalle-btn-cerrar {
@@ -257,6 +250,30 @@
   transition: all 0.2s;
 }
 
+/* =========================================
+   7. ESTILOS HUÉRFANOS / NO UTILIZADOS EN HTML ACTUAL
+========================================= */
+.nav-tabs .nav-link {
+  color: #6c757d;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+  color: #0f172a;
+  border-bottom: 2px solid #0f172a;
+  background: transparent;
+}
+
+.nav-tabs .nav-link:hover:not(.active) {
+  border-bottom: 2px solid #cbd5e1;
+}
+
+/* =========================================
+   8. MEDIA QUERIES (RESPONSIVE)
+========================================= */
 @media (max-width: 991px) {
   .detalle-tabs {
     overflow-x: auto;
@@ -270,10 +287,6 @@
 }
 
 @media (max-width: 767px) {
-  .detalle-titulo {
-    font-size: 1.1rem;
-  }
-
   .detalle-card {
     padding: 1rem;
   }

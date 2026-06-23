@@ -62,9 +62,7 @@ $(document).ready(function () {
     $("#selectResponsable").append(opcion);
   });
 
-
   renderizarHistorial(caso.historial || []);
-
   renderizarComentarios(caso.comentarios || []);
 
   $("#selectEstado").on("change", function () {

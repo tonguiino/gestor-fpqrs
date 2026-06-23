@@ -217,14 +217,8 @@ function radicarCaso() {
 
   const casosExistentes = JSON.parse(localStorage.getItem('casos')) || [];
   casosExistentes.unshift(nuevoCaso);
-
-  // ✅ Fix 1 — guardar el ARRAY completo, no solo el caso nuevo
   localStorage.setItem('casos', JSON.stringify(casosExistentes));
-
-  // ✅ Fix 2 — guardar el caso en sessionStorage para confirmacion.js
   sessionStorage.setItem('ultimoRadicado', JSON.stringify(nuevoCaso));
-
-  // ✅ Fix 3 — redirigir a confirmación
   window.location.href = 'confirmacion.html';
 }
 

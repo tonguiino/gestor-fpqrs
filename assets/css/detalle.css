@@ -1,6 +1,3 @@
-/* =========================================
-   1. LAYOUT Y CONTENEDORES PRINCIPALES
-========================================= */
 .layout-container {
   display: flex;
   min-height: 100vh;
@@ -13,9 +10,6 @@
   overflow: hidden;
 }
 
-/* =========================================
-   2. ENCABEZADO Y MIGA DE PAN (BREADCRUMB)
-========================================= */
 .bread-text-case {
   color: var(--text-primary);
 }
@@ -39,9 +33,6 @@
   height: 6px;
 }
 
-/* =========================================
-   3. ALERTAS SUPERIORES
-========================================= */
 .header-alert-card {
   background-color: var(--accent-danger);
   display: flex;
@@ -49,9 +40,6 @@
   align-items: center;
 }
 
-/* =========================================
-   4. ELEMENTOS GENERALES DE LAS TARJETAS (CARDS)
-========================================= */
 .icon-card-header {
   color: var(--primary-color);
 }
@@ -85,9 +73,6 @@
   font-size: 0.75rem;
 }
 
-/* =========================================
-   5. TARJETA DE DETALLE Y SISTEMA DE TABS
-========================================= */
 .detalle-card {
   background-color: #fff;
   border: 1px solid var(--border-color);
@@ -139,7 +124,6 @@
   text-align: center;
 }
 
-/* ── Contenido interno de los Tabs ── */
 .detalle-label {
   font-size: 0.65rem;
   font-weight: 700;
@@ -155,7 +139,6 @@
   line-height: 1.6;
 }
 
-/* ── Elementos Dinámicos (Comentarios) ── */
 .comentario-item {
   background-color: var(--background-color);
   border-radius: 8px;
@@ -181,7 +164,6 @@
   color: var(--text-light);
 }
 
-/* ── Elementos Dinámicos (Historial) ── */
 .historial-item {
   display: flex;
   gap: 12px;
@@ -214,9 +196,6 @@
   color: var(--text-light);
 }
 
-/* =========================================
-   6. BOTONES DE ACCIÓN (PANEL DERECHO)
-========================================= */
 .btn-dark-blue {
   background-color: #1e3a5f;
   color: white;
@@ -250,9 +229,6 @@
   transition: all 0.2s;
 }
 
-/* =========================================
-   7. ESTILOS HUÉRFANOS / NO UTILIZADOS EN HTML ACTUAL
-========================================= */
 .nav-tabs .nav-link {
   color: #6c757d;
   border: none;
@@ -271,9 +247,6 @@
   border-bottom: 2px solid #cbd5e1;
 }
 
-/* =========================================
-   8. MEDIA QUERIES (RESPONSIVE)
-========================================= */
 @media (max-width: 991px) {
   .detalle-tabs {
     overflow-x: auto;

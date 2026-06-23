@@ -3,6 +3,7 @@
 // =====================================================
 
 $(document).ready(function () {
+  const usuario = { nombre: "Operador Demo" };
   // ── 2. CARGAR SIDEBAR ────────────────────────────
   $("#sidebar").load("components/sidebar.html", function () {
     $('.sidebar-link[data-page="detalle"]').addClass("active");

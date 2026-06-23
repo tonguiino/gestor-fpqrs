@@ -6,7 +6,6 @@ $(document).ready(function () {
   const casos = JSON.parse(localStorage.getItem("casos")) || [];
 
   let ordenActual = { columna: null, direccion: "asc" };
-  // ── Paginación ──
   const CASOS_POR_PAGINA = 10;
   let paginaActual = 1;
 
@@ -31,8 +30,6 @@ $(document).ready(function () {
   $("#cardVencidos").text(slaVencidos);
   $("#cardProximos").text(slaProximos);
   $("#cardCerradosHoy").text(cerradosHoy);
-
-  //Tabla
 
   function renderizarTabla(listaCasos) {
     const tbody = $("#tablaCasos");
@@ -125,22 +122,17 @@ $(document).ready(function () {
     renderizarPagina(filtrados, paginaActual);
   }
 
-  // renderizarTabla(casos);
-
-  //Funcion buscar
   $("#inputBuscar").on("input", actualizarVista);
 
   $("#isFilterBtn").on("click", function () {
     $("#filterInfo").toggleClass("active");
   });
 
-  // Filtros selects y checkboxes
   $(
     "#filtroEstado, #filtroTipo, #filtroServicio, #filtroResponsable, #filtroPrioridad",
   ).on("change", actualizarVista);
   $("#filtroVencidos, #filtroProximos").on("change", actualizarVista);
 
-  // Ordenamiento por columna
   $(document).on("click", ".table-title[data-orden]", function () {
     const columna = $(this).data("orden");
     if (ordenActual.columna === columna) {
@@ -170,16 +162,13 @@ $(document).ready(function () {
 
     renderizarTabla(casosPagina);
 
-    // Actualizar texto informativo
     const desde = total === 0 ? 0 : inicio + 1;
     const hasta = Math.min(fin, total);
     $("#paginadorInfo").text(`Mostrando ${desde}-${hasta} de ${total} casos`);
   }
 
-  // Llamar con paginación desde el inicio
   actualizarVista();
 
-  // Clic en botones de página
   $(document).on("click", ".pag-btn", function (e) {
     e.preventDefault();
     const texto = $(this).text().trim();
@@ -196,8 +185,6 @@ $(document).ready(function () {
     renderizarPagina(casos, paginaActual);
   });
 });
-
-//Funciones auxiliares
 
 function formatearFecha(fecha) {
   if (!fecha) {

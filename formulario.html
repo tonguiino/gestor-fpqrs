@@ -20,12 +20,13 @@
                 <img class="form-logo" src="../assets/img/logo.webp" alt="GestorFPQRS">
                 <div class="text-white">
                     <h1 class="h6 mb-0">GestorFPQRS</h1>
-                    <small class="text-white-50" style="font-size: 0.75rem;">CoopFinanzas — Portal de Atención al
-                        Asociado</small>
+                    <p class="small-text text-white-50">
+                        CoopFinanzas — Portal de Atención al Asociado
+                    </p>
                 </div>
             </div>
             <div class="d-flex align-items-center gap-2 text-white">
-                <span class="bg-success rounded-circle" style="width: 8px; height: 8px; display: inline-block;"></span>
+                <span class="bg-success rounded-circle"></span>
                 <span class="small">Servicio disponible</span>
             </div>
         </div>
@@ -99,8 +100,9 @@
                                 <div class="col-12 col-md-6">
                                     <label for="correo" class="form-label text-dark mb-0">Correo electrónico <span
                                             class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Le enviaremos
-                                        confirmación y actualizaciones a este correo</div>
+                                    <div class="small-text form-text text-secondary mb-2">
+                                        Le enviaremos confirmación y actualizaciones a este correo
+                                    </div>
                                     <input type="email" class="inp-form form-control" id="correo"
                                         placeholder="correo@ejemplo.com">
                                 </div>
@@ -139,7 +141,7 @@
                                 <div class="col-12 col-md-6">
                                     <label for="tipoCaso" class="form-label text-dark mb-0">Tipo de caso <span
                                             class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Qué tipo de
+                                    <div class="small-text form-text text-secondary mb-2">¿Qué tipo de
                                         comunicación desea radicar?</div>
                                     <select id="tipoCaso" class="inp-form form-select text-secondary">
                                         <option selected>Seleccionar tipo de caso...</option>
@@ -153,7 +155,7 @@
                                 <div class="col-12 col-md-6">
                                     <label for="servicio" class="form-label text-dark mb-0">Servicio <span
                                             class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">¿Sobre qué
+                                    <div class="small-text form-text text-secondary mb-2">¿Sobre qué
                                         servicio de la cooperativa es su caso?</div>
                                     <select id="servicio" class="inp-form form-select text-secondary">
                                         <option selected disabled>Seleccionar servicio...</option>
@@ -177,20 +179,16 @@
                                 <div class="col-12 col-md-6">
                                     <label for="categoria" class="form-label text-dark mb-0">Categoría <span
                                             class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione
+                                    <div class="small-text form-text text-secondary mb-2">Seleccione
                                         primero el servicio para ver las categorías disponibles</div>
                                     <select id="categoria" class="inp-form form-select text-secondary">
-                                        <option selected disabled>App Móvil</option>
-                                        <option selected disabled>Portal Web</option>
-                                        <option selected disabled>Cajero Automático</option>
-                                        <option selected disabled>Banca Telefónica</option>
-
+                                        <option selected disabled>Seleccionar categoría...</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="subcategoria" class="form-label text-dark mb-0">Subcategoría <span
                                             class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Seleccione la
+                                    <div class="small-text form-text text-secondary mb-2">Seleccione la
                                         subcategoría que mejor describe su caso</div>
                                     <select id="subcategoria" class="inp-form form-select text-secondary">
                                         <option selected disabled>Seleccionar subcategoría...</option>
@@ -202,7 +200,7 @@
                                 <div class="col-12">
                                     <label for="descripcion" class="form-label text-dark mb-0">Descripción detallada del
                                         caso <span class="text-danger">*</span></label>
-                                    <div class="form-text text-secondary mb-2" style="font-size: 0.75rem;">Incluya
+                                    <div class="small-text form-text text-secondary mb-2">Incluya
                                         fechas, montos, números de transacción y cualquier detalle relevante que
                                         facilite la gestión de su caso</div>
                                     <textarea class="inp-form form-control text-secondary" id="descripcion" rows="4"
@@ -216,19 +214,19 @@
                         <div class="card-header bg-transparent border-bottom border-secondary-subtle p-4">
                             <h3 class="h6 mb-0">Documentos de soporte</h3>
                             <small class="text-secondary">Adjunte capturas de pantalla, comprobantes u otros documentos
-                                que respalden su caso (máx. 5 archivos, 5 MB c/u)</small>
+                                que respalden su caso (máx. 5 archivos, 5 MB c/u)
+                            </small>
                         </div>
                         <div class="card-body p-4">
                             <div class="border border-2 border-secondary-subtle rounded-4 p-5 text-center d-flex flex-column align-items-center justify-content-center"
                                 style="border-style: dashed !important; cursor: pointer;">
                                 <i data-lucide="upload" class="text-secondary mb-3" width="28" height="28"></i>
                                 <p class="mb-1 text-dark">Arrastre archivos aquí o haga clic para seleccionar</p>
-                                <small class="text-secondary" style="font-size: 0.75rem;">PDF, JPG, PNG, DOCX — máximo 5
+                                <small class="small-text small-text text-secondary">PDF, JPG, PNG, DOCX — máximo 5
                                     MB por archivo</small>
                             </div>
                         </div>
                     </div>
-
                     <div class="card border border-secondary-subtle shadow-sm rounded-4 mb-4">
                         <div class="card-body p-4">
                             <div class="auth-text mb-0">
@@ -254,26 +252,23 @@
                                     electrónico</small>
                             </div>
                             <button type="submit"
-                                class="btn text-white px-4 py-2 rounded-3 d-flex align-items-center justify-content-center gap-2"
-                                style="background-color: var(--primary-color, #1e3a5f);">
+                                class="submit-btn btn text-white px-4 py-2 rounded-3 d-flex align-items-center justify-content-center gap-2">
                                 Radicar caso FPQRS <i data-lucide="chevron-right" width="18" height="18"></i>
                             </button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
     </main>
-
     <footer class="border-top border-secondary-subtle py-4 mt-auto">
         <div class="container-fluid px-4">
             <div class="row justify-content-center">
                 <div
                     class="col-12 col-lg-10 col-xl-8 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                     <small class="text-secondary">© 2026 CoopFinanzas. Sistema FPQRS — Normativa SFC Colombia</small>
-                    <small class="text-secondary">¿Necesita ayuda? Llame al <strong class="text-dark">01 8000 123
-                            456</strong></small>
+                    <small class="text-secondary">¿Necesita ayuda? Llame al <strong class="text-dark">01 8000 123 456</strong>
+                    </small>
                 </div>
             </div>
         </div>

@@ -14,6 +14,16 @@
   height: auto;
 }
 
+.small-text {
+  font-size: 0.75rem;
+}
+
+.rounded-circle {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+}
+
 .title-body {
   font-weight: normal;
   font-size: x-large;
@@ -24,72 +34,83 @@
   color: var(--color-info);
 }
 
-.alert-info-text{
-    font-size: .75rem;
-    line-height: 1rem;
-    margin: 0;
+.alert-info-text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin: 0;
 }
 
-.body-info{
-    width: 100%;
+.body-info {
+  width: 100%;
 }
 
-.icon-form{
-    color: var(--primary-color);
-    width: 17px;
+.icon-form {
+  color: var(--primary-color);
+  width: 17px;
 }
 
-.inp-form{
-    background-color: var(--background-color);
+.inp-form {
+  background-color: var(--background-color);
 }
 
-.auth-text{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    padding:16px;
-    border:1px solid #d1d5db;
-    border-radius:16px;
+.upload-dropzone {
+  border: 2px dashed #dee2e6;
+  cursor: pointer;
+  transition: border-color 0.2s;
 }
 
-.auth-text input{
-    width:17px;
-    height:17px;
-    margin-top:3px;
-    flex-shrink:0;
-    border: 1px solid var(--text-mute);
+.upload-dropzonex:hover {
+  border-color: #6c757d;
+}
+.auth-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
 }
 
-.auth-text .form-check-label{
-    font-size: 0.9rem;
+.auth-text input {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--text-mute);
 }
 
-.auth-text .form-check-label a{
-    color: var(--primary-color);
-    text-decoration: none;
+.auth-text .form-check-label {
+  font-size: 0.9rem;
 }
 
-.auth-text .form-check-label a:hover{
-    text-decoration: underline;
+.auth-text .form-check-label a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
+.auth-text .form-check-label a:hover {
+  text-decoration: underline;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+}
 /* Agregar al final de formulario.css */
- 
+
 /* Error del card de autorización */
 .card-auth-error {
   border-color: var(--color-danger) !important;
   background-color: #fff5f5 !important;
   transition: all 0.2s;
 }
- 
+
 /* Select deshabilitado — visual más claro */
 select:disabled {
   background-color: #f8f9fa;
   color: #adb5bd;
   cursor: not-allowed;
 }
- 
- 
+
 .inp-form.is-invalid {
   border-color: var(--color-danger);
 }

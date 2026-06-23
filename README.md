@@ -68,8 +68,6 @@ gestor-fpqrs/
 1. Descomprimir el archivo `.zip` en cualquier carpeta.
 2. Abrir el archivo `index.html` con cualquier navegador moderno (Chrome, Firefox o Edge).
 
-> **Nota:** La carga del sidebar utiliza `$.load()` de jQuery, por lo que algunos navegadores pueden requerir un servidor local debido a restricciones de CORS.
-
 ### Opción B — Servidor local recomendado (Visual Studio Code)
 
 1. Instalar la extensión **Live Server**.
@@ -83,14 +81,17 @@ gestor-fpqrs/
 ## Cuentas de demostración
 
 ### Administrador
+
 - **Correo:** `admin@coopfinanzas.com.co`
 - **Contraseña:** `Admin@2026!`
 
 ### Operador
+
 - **Correo:** `operador@coopfinanzas.com.co`
 - **Contraseña:** `Oper@2026!`
 
 ### Supervisor
+
 - **Correo:** `supervisor@coopfinanzas.com.co`
 - **Contraseña:** `Super@2026!`
 
@@ -99,18 +100,23 @@ gestor-fpqrs/
 ## Vistas implementadas
 
 ### Inicio de sesión (`index.html`)
+
 Autenticación mediante cuentas de demostración y autocompletado de credenciales.
 
 ### Bandeja de casos (`bandeja.html`)
+
 Vista principal para la gestión de casos con búsqueda, filtros, ordenamiento y paginación.
 
 ### Detalle del caso (`detalle.html`)
+
 Visualización completa del caso seleccionado, historial de movimientos, comentarios y acciones operativas.
 
 ### Formulario FPQRS (`formulario.html`)
+
 Radicación pública de solicitudes mediante formulario dinámico con validaciones y selects dependientes.
 
 ### Confirmación (`confirmacion.html`)
+
 Resumen de la radicación realizada, mostrando el número de caso generado.
 
 ---
@@ -122,7 +128,7 @@ Resumen de la radicación realizada, mostrando el número de caso generado.
 La solución no requiere base de datos ni servicios externos. La persistencia se implementa mediante:
 
 - **localStorage:** almacena los casos. Se inicializa con datos semilla al primer acceso y persiste entre sesiones.
-- **sessionStorage:** mantiene la sesión autenticada y el caso seleccionado entre páginas.
+- **sessionStorage:** mantiene el caso seleccionado entre páginas.
 
 ### Componente compartido (Sidebar)
 
